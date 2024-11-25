@@ -6,3 +6,4 @@ Favor insertar sus nombres y apellidos en una lista numerada.
 
 1. Lucia Lopez Videla Ontiveros
 2. jhordan alonzo nicolas arteaga
+3. Mauricio Adrian Rojas Díaz 

@@ -1,4 +1,9 @@
 # practica-profesional-iv
 
+Docente: Alejandro Javier Sanchez Roa
+
 Favor insertar sus nombres y apellidos en una lista numerada.
-1. Alan Franco Castro Ramirez
+
+1. Lucia Lopez Videla Ontiveros
+2. Alan Franco Castro Ramirez
+

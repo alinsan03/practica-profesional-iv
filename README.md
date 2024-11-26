@@ -10,6 +10,11 @@ Favor insertar sus nombres y apellidos en una lista numerada.
 4. Alan Franco Castro Ramirez
 5. Jhordan Alonzo Nicolas Arteaga
 
+## Stack tecnológico:
+Las herramientas que se utilizarán para el desarrollo de este proyecto serán:
+    1. Php con Laravel (<a href="https://laravel.com/"> Acerca de Laravel</a>)
+    2. Java con Bootsprint (<a href="https://getbootstrap.com/"> Acerca de Bootstrap</a>)
+    3. Docker (<a href="https://www.docker.com/"> Acerca de Docker</a>)
 
 ## Diagrama de casos de uso:
 

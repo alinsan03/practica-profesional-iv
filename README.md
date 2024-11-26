@@ -11,7 +11,7 @@ Favor insertar sus nombres y apellidos en una lista numerada.
 5. Jhordan Alonzo Nicolas Arteaga
 
 ## Stack tecnológico:
-Las herramientas que se utilizarán para el desarrollo de este proyecto serán:
+Las herramientas que se utilizarán para el desarrollo de este proyecto serán:<br>
     1. Php con Laravel <a href="https://laravel.com/"> Acerca de Laravel</a><br>
     2. Java con Bootstrap <a href="https://getbootstrap.com/"> Acerca de Bootstrap</a><br>
     3. Docker <a href="https://www.docker.com/"> Acerca de Docker</a><br>

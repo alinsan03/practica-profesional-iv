@@ -12,9 +12,9 @@ Favor insertar sus nombres y apellidos en una lista numerada.
 
 ## Stack tecnológico:
 Las herramientas que se utilizarán para el desarrollo de este proyecto serán:
-    1. Php con Laravel <a href="https://laravel.com/"> Acerca de Laravel</a>
-    2. Java con Bootsprint <a href="https://getbootstrap.com/"> Acerca de Bootstrap</a>
-    3. Docker <a href="https://www.docker.com/"> Acerca de Docker</a>
+    1. Php con Laravel <a href="https://laravel.com/"> Acerca de Laravel</a><b>
+    2. Java con Bootstrap <a href="https://getbootstrap.com/"> Acerca de Bootstrap</a><b>
+    3. Docker <a href="https://www.docker.com/"> Acerca de Docker</a><b>
 
 ## Diagrama de casos de uso:
 

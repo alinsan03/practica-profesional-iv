@@ -13,7 +13,7 @@ Favor insertar sus nombres y apellidos en una lista numerada.
 ## Stack tecnológico:
 Las herramientas que se utilizarán para el desarrollo de este proyecto serán:
     1. Php con Laravel <a href="https://laravel.com/"> Acerca de Laravel</a><br>
-    2. Java con Bootstrap <a href="https://getbootstrap.com/"> Acerca de Bootstrap</a><br>
+    2. Java con Spring Boot <a href="https://spring.io/projects/spring-boot"> Acerca de Spring Boot</a><br>
     3. Docker <a href="https://www.docker.com/"> Acerca de Docker</a><br>
 
 ## Diagrama de casos de uso:

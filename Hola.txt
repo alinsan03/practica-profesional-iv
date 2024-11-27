@@ -1,5 +1,0 @@
-Hola Mundo en Git
-Para la resolución de conflictos, se debe realizar:
-git pull
-git checkout pr-lucia
-git merge main

@@ -9,6 +9,7 @@ Favor insertar sus nombres y apellidos en una lista numerada.
 3. Joaquin Gabriel Vera Avila
 4. Alan Franco Castro Ramirez
 5. Jhordan Alonzo Nicolas Arteaga
+6. Mosiah Renan Mamani Intriago
 
 ## Informacion Inicial: 
 Nombre del proyecto: **_HABRA GASOLINA_**

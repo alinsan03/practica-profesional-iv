@@ -19,4 +19,4 @@ Favor insertar sus nombres y apellidos en una lista numerada.
 
 *Nombre del proyecto:* **_HABRA GASOLINA_**
 *Descripcion:* El nombre del proyecto fue seleccionado durante clases, a través de una votación.
-<alt = "Logotipo" src= https://github.com/alinsan03/practica-profesional-iv/raw/agregar-logo-y-descripcion/images/logo.png)>
+<img width = "510 "alt = "Logotipo" src= https://github.com/alinsan03/practica-profesional-iv/raw/agregar-logo-y-descripcion/images/logo.png)>

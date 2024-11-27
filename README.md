@@ -14,3 +14,9 @@ Favor insertar sus nombres y apellidos en una lista numerada.
 ## Diagrama de casos de uso:
 
 <img width="437" alt="Diagrama de caso de usos Gasolinera" src="https://github.com/user-attachments/assets/b6b4ebe6-9666-4dd2-9393-5fbffdd6ebcf">
+
+## Agregando nombre, descripción y logo
+
+*Nombre del proyecto:* **_HABRA GASOLINA_**
+*Descripcion:* El nombre del proyecto fue seleccionado durante clases, a través de una votación.
+![Logo del Proyecto]¨(https://github.com/alinsan03/practica-profesional-iv/raw/agregar-logo-y-descripcion/images/logo.png)

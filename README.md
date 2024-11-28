@@ -30,6 +30,10 @@ Las herramientas que se utilizarán para el desarrollo de este proyecto serán:<
 
 ![DB schema-2024-11-20-1042](https://github.com/user-attachments/assets/d05c5e31-a849-4c00-8839-1098b57c794c)
 
+## Mockup main screen
+
+![mockup](https://github.com/user-attachments/assets/46338643-2ad0-4ca4-8a44-b337f481336d)
+
 ## Mockup user y administration:
 
 <img width="437" alt="Mockup user" src="https://github.com/user-attachments/assets/e85bebb7-9b75-448c-b4d0-74f734b3ee7b">

@@ -35,6 +35,6 @@ Las herramientas que se utilizarán para el desarrollo de este proyecto serán:<
 <img width="437" alt="Mockup user" src="https://github.com/user-attachments/assets/e85bebb7-9b75-448c-b4d0-74f734b3ee7b">
 <img width="437" alt="Mockup administration" src="https://github.com/user-attachments/assets/a8c85952-e9d2-464a-8c84-16c3343b5e88">
 
-## Proposed endpoint:
+## Proposed endpoints:
 
 <img width="437" alt="Endpoints" src="https://github.com/user-attachments/assets/8fe21a27-8539-4a64-9cb8-64c11438cdc0">

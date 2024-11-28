@@ -49,7 +49,7 @@ CREATE TABLE `availabilities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 ALTER TABLE `availabilities`
-  ADD PRIMARY KEY (`id_availabities`),
+  ADD PRIMARY KEY (`id_availabilities`),
   ADD KEY `id_gas_station` (`id_gas_station`),
   ADD KEY `id_status` (`id_status`),
   ADD KEY `id_type` (`id_type`);
@@ -58,7 +58,7 @@ ALTER TABLE `availabilities`
   MODIFY `id_availabilities` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `availabilities`
-  ADD CONSTRAINT `availabilities_ibfk_1` FOREIGN KEY (`id_gas_station`) REFERENCES `gas_station` (`id_gas_station`),
+  ADD CONSTRAINT `availabilities_ibfk_1` FOREIGN KEY (`id_gas_station`) REFERENCES `gas_stations` (`id_gas_station`),
   ADD CONSTRAINT `availabilities_ibfk_2` FOREIGN KEY (`id_status`) REFERENCES `statuses` (`id_status`),
   ADD CONSTRAINT `availabilities_ibfk_3` FOREIGN KEY (`id_type`) REFERENCES `fuel_types` (`id_fuel`);  
 
@@ -79,11 +79,4 @@ ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 
   ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_gas_station`) REFERENCES `gas_stations` (`id_station`);
-
-
-
-
-
-
-
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_gas_station`) REFERENCES `gas_stations` (`id_gas_station`);

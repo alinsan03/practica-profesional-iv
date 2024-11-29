@@ -10,6 +10,7 @@ Favor insertar sus nombres y apellidos en una lista numerada.
 4. Alan Franco Castro Ramirez
 5. Jhordan Alonzo Nicolas Arteaga
 6. Mosiah Renan Mamani Intriago
+7. Luis Miguel Juchasara Cruz
 
 ## Informacion Inicial: 
 Nombre del proyecto: **_HABRA GASOLINA_**
@@ -42,3 +43,7 @@ Las herramientas que se utilizarán para el desarrollo de este proyecto serán:<
 ## Proposed endpoints:
 
 <img width="437" alt="Endpoints" src="https://github.com/user-attachments/assets/8fe21a27-8539-4a64-9cb8-64c11438cdc0">
+
+## add Project Architechture:
+
+![project_architechture](https://github.com/user-attachments/assets/100eceba-9109-4138-98a9-df621101f04f)

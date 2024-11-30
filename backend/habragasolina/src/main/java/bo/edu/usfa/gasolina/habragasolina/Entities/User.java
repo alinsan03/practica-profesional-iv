@@ -15,6 +15,7 @@ public class User {
     @Id
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
     private Long id;
 
     @Column(nullable = false)
@@ -29,9 +30,12 @@ public class User {
     @Column(nullable = false)
     private String date_last_login;
 
-    @ManyToOne
-    @JoinColumn(name = "id_gas_station", referencedColumnName = "id", nullable = false)
-    private GasStation gasStation;
+    @Column(nullable = false)
+    private int id_gas_station;
+
+    // @ManyToOne
+    // @JoinColumn(name = "id_gas_station", referencedColumnName = "id", nullable = false)
+    // private GasStation gasStation;
 
     public Long getId() {
         return id;
@@ -68,16 +72,17 @@ public class User {
         this.name = name;
     }
 
+
     public void setDate_last_login(String date_last_login) {
         this.date_last_login = date_last_login;
     }
 
-    public GasStation getGasStation() {
-        return gasStation;
+    public int getId_gas_station() {
+        return id_gas_station;
     }
 
-    public void setGasStation(GasStation gasStation) {
-        this.gasStation = gasStation;
+    public void setId_gas_station(int id_gas_station) {
+        this.id_gas_station = id_gas_station;
     }
 
 }

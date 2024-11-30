@@ -3,16 +3,19 @@ package bo.edu.usfa.gasolina.habragasolina.Service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 import bo.edu.usfa.gasolina.habragasolina.Entities.User;
 import bo.edu.usfa.gasolina.habragasolina.Repository.GasStationRepository;
 import bo.edu.usfa.gasolina.habragasolina.Repository.UserRepository;
 
 @Service
 public class UserService {
-
+    
     private final UserRepository userRepository;
+    
     private final GasStationRepository gasStationRepository;
 
     public UserService(UserRepository userRepository, GasStationRepository gasStationRepository) {
@@ -62,7 +65,6 @@ public class UserService {
             user.setUsername(updateUser.getUsername());
             user.setPassword(updateUser.getPassword());
             user.setName(updateUser.getName());
-            user.setDate_last_login(updateUser.getDate_last_login());
             return userRepository.save(user);
         } else {
             throw new RuntimeException("User not found");

@@ -1,5 +1,9 @@
 package bo.edu.usfa.gasolina.habragasolina.Entities;
 
+import java.time.LocalDateTime;
+import org.hibernate.annotations.CreationTimestamp;
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,12 +17,11 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User {
     @Id
-    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
-    private Long id;
+    private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
@@ -27,17 +30,15 @@ public class User {
     @Column(nullable = false)
     private String name;
     
+    @CreationTimestamp
     @Column(nullable = false)
-    private String date_last_login;
+    private LocalDateTime date_last_login;
 
-    @Column(nullable = false)
-    private int id_gas_station;
+    @ManyToOne
+    @JoinColumn(name = "id_gas_station", referencedColumnName = "id_gas_station", nullable = false)
+    private GasStation gasStation;
 
-    // @ManyToOne
-    // @JoinColumn(name = "id_gas_station", referencedColumnName = "id", nullable = false)
-    // private GasStation gasStation;
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -53,10 +54,7 @@ public class User {
         return name;
     }
 
-    public String getDate_last_login() {
-        return date_last_login;
-    }
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -72,17 +70,21 @@ public class User {
         this.name = name;
     }
 
+    public GasStation getGasStation() {
+        return gasStation;
+    }
 
-    public void setDate_last_login(String date_last_login) {
+    public void setGasStation(GasStation gasStation) {
+        this.gasStation = gasStation;
+    }
+
+    public LocalDateTime getDate_last_login() {
+        return date_last_login;
+    }
+
+    public void setDate_last_login(LocalDateTime date_last_login) {
         this.date_last_login = date_last_login;
     }
 
-    public int getId_gas_station() {
-        return id_gas_station;
-    }
-
-    public void setId_gas_station(int id_gas_station) {
-        this.id_gas_station = id_gas_station;
-    }
 
 }

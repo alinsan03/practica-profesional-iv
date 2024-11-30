@@ -12,7 +12,8 @@ import jakarta.persistence.Column;
 public class GasStation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_gas_station")
+    private Integer id;
 
     @Column(nullable = false)
     private String name;
@@ -20,11 +21,11 @@ public class GasStation {
     @Column(nullable = false)
     private String location;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

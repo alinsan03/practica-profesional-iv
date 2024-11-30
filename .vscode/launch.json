@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-HabragasolinaApplication<bo.edu.usfa.gasolina-habragasolina>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "bo.edu.usfa.gasolina.habragasolina.HabragasolinaApplication",
+            "projectName": "bo.edu.usfa.gasolina-habragasolina",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

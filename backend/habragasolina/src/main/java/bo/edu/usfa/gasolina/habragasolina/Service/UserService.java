@@ -3,10 +3,10 @@ package bo.edu.usfa.gasolina.habragasolina.Service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
-import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 import bo.edu.usfa.gasolina.habragasolina.Entities.User;
 import bo.edu.usfa.gasolina.habragasolina.Repository.GasStationRepository;
 import bo.edu.usfa.gasolina.habragasolina.Repository.UserRepository;
@@ -24,29 +24,29 @@ public class UserService {
     }
     
     public User saveUser(User user) {
-        // if(user.getPassword().length() <= 6){
-        //     throw new RuntimeException("Password must be longer or equal than 6 characters");
-        // }
+        if(user.getPassword().length() <= 6){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Password must be longer or equal than 6 characters");
+        }
         
-        // if(userRepository.existsByUsername(user.getUsername())){
-        //     throw new RuntimeException("Username must be unique");
-        // }
+        if(userRepository.existsByUsername(user.getUsername())){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User is duplicated");
+        }
 
-        // if(user.getUsername().length() <= 3){
-        //     throw new RuntimeException("UserName must be longer than 3 characters");
-        // }
+        if(user.getUsername().length() <= 3){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "UserName must be longer than 3 characters");
+        }
 
-        // if(user.getName().length() <= 3){
-        //     throw new RuntimeException("Name must be longer than 3 characters");
-        // }
+        if(user.getName().length() <= 3){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Name must be longer than 3 characters");
+        }
 
-        // if(user.getId_gas_station() < 0){
-        //     throw new RuntimeException("IdGasStation should be positive");
-        // }
+        if(user.getId_gas_station() < 0){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "IdGasStation should be positive");
+        }
         
-        // if(!gasStationRepository.existsById(user.getGasStation().getId())){
-        //     throw new RuntimeException("Gas station does not exists");
-        // }
+        if(!gasStationRepository.existsById(user.getId_gas_station())){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "IdGasSTation does not exists");
+        }
         
         return userRepository.save(user);
     }

@@ -10,7 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -34,9 +33,8 @@ public class User {
     @Column(nullable = false)
     private LocalDateTime date_last_login;
 
-    @ManyToOne
     @JoinColumn(name = "id_gas_station", referencedColumnName = "id_gas_station", nullable = false)
-    private GasStation gasStation;
+    private Integer id_gas_station;
 
     public Integer getId() {
         return id;
@@ -70,14 +68,6 @@ public class User {
         this.name = name;
     }
 
-    public GasStation getGasStation() {
-        return gasStation;
-    }
-
-    public void setGasStation(GasStation gasStation) {
-        this.gasStation = gasStation;
-    }
-
     public LocalDateTime getDate_last_login() {
         return date_last_login;
     }
@@ -86,5 +76,11 @@ public class User {
         this.date_last_login = date_last_login;
     }
 
+    public Integer getId_gas_station() {
+        return id_gas_station;
+    }
 
+    public void setId_gas_station(Integer id_gas_station) {
+        this.id_gas_station = id_gas_station;
+    }
 }

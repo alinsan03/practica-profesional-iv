@@ -1,7 +1,8 @@
 package bo.edu.usfa.gasolina.habragasolina.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,8 @@ public class UserService {
     }
     
     public User saveUser(User user) {
+
+        //validations
         if(user.getPassword().length() <= 6){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Password must be longer or equal than 6 characters");
         }
@@ -48,29 +51,26 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "IdGasSTation does not exists");
         }
         
+        user.setPassword(hashPassword(user.getPassword()));
         return userRepository.save(user);
     }
 
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
-    }
-
-    public Optional<User> getUserById(long id) {
-        return userRepository.findById(id);
-    }
-    public User updateUser(Long id, User updateUser){
-        Optional<User> existingUser = userRepository.findById(id);
-        if(existingUser.isPresent()) {
-            User user = existingUser.get();
-            user.setUsername(updateUser.getUsername());
-            user.setPassword(updateUser.getPassword());
-            user.setName(updateUser.getName());
-            return userRepository.save(user);
-        } else {
-            throw new RuntimeException("User not found");
+    //Hashing method
+    private String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedHash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : encodedHash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Error while hashing password", e);
         }
-    }
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
     }
 }

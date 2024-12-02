@@ -26,7 +26,7 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "UserName must be longer than 3 characters");
         }
 
-        if(user.getPassword().length() <= 6){
+        if(user.getPassword().length() < 6){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Password must be longer or equal than 6 characters");
         }
 

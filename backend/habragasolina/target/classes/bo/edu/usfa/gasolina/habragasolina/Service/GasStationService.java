@@ -12,7 +12,7 @@ public class GasStationService {
         this.gasStationRepository = gasStationRepository;
     }
 
-    public void deleteGasStation(Long id) {
+    public void deleteGasStation(Integer id) {
         if (gasStationRepository.existsById(id)) {
             gasStationRepository.deleteById(id);
         } else {

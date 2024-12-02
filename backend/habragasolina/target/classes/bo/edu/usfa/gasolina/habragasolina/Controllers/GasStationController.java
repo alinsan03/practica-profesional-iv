@@ -15,7 +15,7 @@ public class GasStationController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteGasStation(@PathVariable Long id) {
+    public ResponseEntity<String> deleteGasStation(@PathVariable Integer id) {
         try {
             gasStationService.deleteGasStation(id);
             return ResponseEntity.ok("Gas station deleted successfully.");

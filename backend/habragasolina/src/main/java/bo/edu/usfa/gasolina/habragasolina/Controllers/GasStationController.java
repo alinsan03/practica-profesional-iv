@@ -1,5 +1,6 @@
 package bo.edu.usfa.gasolina.habragasolina.Controllers;
 
+import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 import bo.edu.usfa.gasolina.habragasolina.Service.GasStationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,11 @@ public class GasStationController {
         } catch (RuntimeException e) {
             return ResponseEntity.status(404).body(e.getMessage());
         }
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<GasStation> updateGasStation(@PathVariable Integer id, @RequestBody GasStation gasStation) {
+        GasStation updatedGasStation = gasStationService.updateGasStation(id, gasStation);
+        return ResponseEntity.ok(updatedGasStation);
     }
 }
 

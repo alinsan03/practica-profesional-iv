@@ -1,6 +1,6 @@
-package bo.edu.usfa.gasolina.habragasolina.service;
+package bo.edu.usfa.gasolina.habragasolina.Service;
 
-import bo.edu.usfa.gasolina.habragasolina.repository.GasStationRepository;
+import bo.edu.usfa.gasolina.habragasolina.Repository.GasStationRepository;
 import org.springframework.stereotype.Service;
 
 @Service

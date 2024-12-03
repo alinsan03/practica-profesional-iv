@@ -1,21 +1,18 @@
-package bo.edu.usfa.gasolina.habragasolina.entity;
+package bo.edu.usfa.gasolina.habragasolina.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class GasStation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @column(name = "id_gas_station")
+    @Column(name = "id_gas_station")
     private Integer id;
     private String name;
     private String location;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

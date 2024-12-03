@@ -1,6 +1,6 @@
-package bo.edu.usfa.gasolina.habragasolina.controller;
+package bo.edu.usfa.gasolina.habragasolina.Controllers;
 
-import bo.edu.usfa.gasolina.habragasolina.service.GasStationService;
+import bo.edu.usfa.gasolina.habragasolina.Service.GasStationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/gas-station")
+@RequestMapping("/api/gasstation")
 public class GasStationController {
 
     private final GasStationService gasStationService;

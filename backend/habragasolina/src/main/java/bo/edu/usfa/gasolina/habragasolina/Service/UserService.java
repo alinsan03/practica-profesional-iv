@@ -53,7 +53,7 @@ public class UserService {
     public boolean updateUser(Long id, User user) {
         if (userRepository.existsById(id)) {
             User existingUser = userRepository.findById(id).get();
-            existingUser.setPassword(user.getPassword());
+            existingUser.setPassword(Security.hashPassword(user.getPassword()));
             existingUser.setName(user.getName());
             userRepository.save(existingUser);
             return true;

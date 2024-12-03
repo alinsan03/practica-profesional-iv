@@ -40,9 +40,9 @@ public class UserController {
             @RequestBody User user) {
         boolean updated = userService.updateUser(id, user);
         if (updated) {
-            return ResponseEntity.ok("Usuario actualizado exitosamente");
+            return ResponseEntity.ok("updated user successfully");
         } else {
-            return ResponseEntity.status(404).body("Usuario no encontrado");
+            return ResponseEntity.status(404).body("User not found");
         }
     }
    

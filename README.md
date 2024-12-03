@@ -11,6 +11,7 @@ Favor insertar sus nombres y apellidos en una lista numerada.
 5. Jhordan Alonzo Nicolas Arteaga
 6. Mosiah Renan Mamani Intriago
 
+
 ## Informacion Inicial: 
 Nombre del proyecto: **_HABRA GASOLINA_**
 Descripcion: El sistema proveera informacion a los usuarios sobre la disponibilidad de los distintos tipos de combustible en las Estaciones de Servicio, asi tambien permitira a los usuarios de las Estaciones de Servicio el poder ingresar la disponibilidad de los mismos.
@@ -42,3 +43,7 @@ Las herramientas que se utilizarán para el desarrollo de este proyecto serán:<
 ## Proposed endpoints:
 
 <img width="437" alt="Endpoints" src="https://github.com/user-attachments/assets/8fe21a27-8539-4a64-9cb8-64c11438cdc0">
+
+## add Project Architechture:
+
+![project_architechture](https://github.com/user-attachments/assets/100eceba-9109-4138-98a9-df621101f04f)

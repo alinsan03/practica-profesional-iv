@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bo.edu.usfa.gasolina.habragasolina.Entities.User;
 import bo.edu.usfa.gasolina.habragasolina.Service.UserService;
+
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
 
     private final UserService userService;
 
@@ -29,5 +33,17 @@ public class UserController {
     User newUser = userService.saveUser(user);
     return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
    }
+
+   @PutMapping("/{id}")
+    public ResponseEntity<String> updateUser(
+            @PathVariable("id") Long id, 
+            @RequestBody User user) {
+        boolean updated = userService.updateUser(id, user);
+        if (updated) {
+            return ResponseEntity.ok("updated user successfully");
+        } else {
+            return ResponseEntity.status(404).body("User not found");
+        }
+    }
    
 }

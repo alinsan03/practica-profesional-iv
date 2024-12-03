@@ -34,7 +34,7 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Name must be longer than 3 characters");
         }
 
-        if(user.getId_gas_station() < 0){
+        if(user.getId_gas_station() <= 0){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "IdGasStation should be positive");
         }
         

@@ -14,6 +14,15 @@ public class GasStationService {
     }
 
     public GasStation saveGasStation(GasStation gasStation) {
+        if(gasStation.getName().length() <= 3 ){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Name must be longer than 3 characters");
+        }
+        if(gasStation.getName().length() > 100){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Name can't be longer than 100 characters");
+        }
+        if(gasStationRepository.existsByName(gasStation.getName())){
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "This gas station already exists");
+        }
         return gasStationRepository.save(gasStation);
     }
 

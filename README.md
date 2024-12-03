@@ -1,8 +1,8 @@
-# practica-profesional-iv
+# Professional-Practice-IV  
 
-Docente: Alejandro Javier Sanchez Roa
+Teacher: Alejandro Javier Sanchez Roa
 
-Favor insertar sus nombres y apellidos en una lista numerada.
+Please insert your first and last names in a numbered list.
 
 1. Lucia Lopez Videla Ontiveros
 2. Mauricio Adrian Rojas Díaz 
@@ -11,19 +11,20 @@ Favor insertar sus nombres y apellidos en una lista numerada.
 5. Jhordan Alonzo Nicolas Arteaga
 6. Mosiah Renan Mamani Intriago
 7. Luis Miguel Juchasara Cruz
+8. Bayron Guillermo Tenorio Zarate
 
-## Informacion Inicial: 
-Nombre del proyecto: **_HABRA GASOLINA_**
-Descripcion: El sistema proveera informacion a los usuarios sobre la disponibilidad de los distintos tipos de combustible en las Estaciones de Servicio, asi tambien permitira a los usuarios de las Estaciones de Servicio el poder ingresar la disponibilidad de los mismos.
+## Initial Information : 
+Project Name: **_HABRA GASOLINA_**
+Description: The system will provide information to users about the availability of different types of fuel at Service Stations, and will also allow users of Service Stations to enter their availability.
 <img width = "510 "alt = "Logotipo" src= https://github.com/alinsan03/practica-profesional-iv/raw/agregar-logo-y-descripcion/images/logo.png)>
 
-## Stack tecnológico:
-Las herramientas que se utilizarán para el desarrollo de este proyecto serán:<br>
-    1. Php con Laravel <a href="https://laravel.com/"> Acerca de Laravel</a><br>
-    2. Java con Spring Boot <a href="https://spring.io/projects/spring-boot"> Acerca de Spring Boot</a><br>
-    3. Docker <a href="https://www.docker.com/"> Acerca de Docker</a><br>
+## Technology Stack:
+The tools that will be used for the development of this project will be:<br>
+    1. Php with Laravel <a href="https://laravel.com/"> About Laravel</a><br>
+    2. Java with Spring Boot <a href="https://spring.io/projects/spring-boot"> About Spring Boot</a><br>
+    3. Docker <a href="https://www.docker.com/"> About Docker</a><br>
 
-## Diagrama de casos de uso:
+## Use Case Diagram :
 
 <img width="437" alt="Diagrama de caso de usos Gasolinera" src="https://github.com/user-attachments/assets/b6b4ebe6-9666-4dd2-9393-5fbffdd6ebcf">
 

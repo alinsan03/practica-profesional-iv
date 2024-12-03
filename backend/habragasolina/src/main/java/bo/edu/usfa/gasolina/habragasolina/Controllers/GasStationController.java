@@ -1,17 +1,26 @@
 package bo.edu.usfa.gasolina.habragasolina.Controllers;
 
-import bo.edu.usfa.gasolina.habragasolina.Service.GasStationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
+import bo.edu.usfa.gasolina.habragasolina.Service.GasStationService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("/api/gasstation")
+@RequestMapping("/gasstation")
 public class GasStationController {
 
     private final GasStationService gasStationService;
 
     public GasStationController(GasStationService gasStationService) {
         this.gasStationService = gasStationService;
+    }
+
+    @PostMapping("")
+    public ResponseEntity<GasStation> saveGasStation(@RequestBody GasStation gasStation) {
+        GasStation newGasStation = gasStationService.saveGasStation(gasStation);
+        return ResponseEntity.ok(newGasStation);
     }
 
     @DeleteMapping("/{id}")

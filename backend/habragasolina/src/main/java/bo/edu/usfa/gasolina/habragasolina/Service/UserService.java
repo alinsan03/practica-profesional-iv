@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import bo.edu.usfa.gasolina.habragasolina.Entities.Authentication;
 import bo.edu.usfa.gasolina.habragasolina.Entities.User;
 import bo.edu.usfa.gasolina.habragasolina.Repository.GasStationRepository;
 import bo.edu.usfa.gasolina.habragasolina.Repository.UserRepository;
@@ -48,6 +49,18 @@ public class UserService {
         
         user.setPassword(Security.hashPassword(user.getPassword()));
         return userRepository.save(user);
+    }
+
+    public User Authenticate(Authentication userInformation)
+    {
+        if(userRepository.existsByUsername(userInformation.getUsername())){
+            User user = userRepository.findByUsername(userInformation.getUsername());
+            if(user.getPassword() == Security.hashPassword(userInformation.getPassword()))
+            {
+                return user;
+            }
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username or password invalid");
     }
     
 }

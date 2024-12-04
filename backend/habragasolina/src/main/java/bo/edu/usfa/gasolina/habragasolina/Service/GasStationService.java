@@ -1,10 +1,16 @@
 package bo.edu.usfa.gasolina.habragasolina.Service;
 
+import bo.edu.usfa.gasolina.habragasolina.Entities.Availability;
 import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
+import bo.edu.usfa.gasolina.habragasolina.Entities.GasStationAvailability;
+import bo.edu.usfa.gasolina.habragasolina.Repository.AvailabilityRepository;
 import bo.edu.usfa.gasolina.habragasolina.Repository.GasStationRepository;
 import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,9 +22,11 @@ import java.util.Optional;
 public class GasStationService {
 
     private final GasStationRepository gasStationRepository;
+    private final AvailabilityRepository availabilityRepository;
 
-    public GasStationService(GasStationRepository gasStationRepository) {
+    public GasStationService(GasStationRepository gasStationRepository, AvailabilityRepository availabilityRepository) {
         this.gasStationRepository = gasStationRepository;
+        this.availabilityRepository = availabilityRepository;
     }
 
     public GasStation updateGasStation(Integer id, GasStation updatedGasStation) {
@@ -58,6 +66,42 @@ public class GasStationService {
         return gasStation.orElseThrow(() -> 
             new RuntimeException("Gas station not found, id: " + id));
     }
+    public List<GasStationAvailability> getGasStationAvailability() {
+        List<GasStation> gasStations = gasStationRepository.findAll();
+        List<GasStationAvailability> gasStationsAvailabilities = new ArrayList<>();
+
+        for (GasStation gasStation : gasStations) {
+            GasStationAvailability record = new GasStationAvailability();
+            record.setName(gasStation.getName());
+            record.setLocation(gasStation.getLocation());
+            Availability gasolina = getAvailabilityByType(gasStation.getAvailabilities(), 1);
+            if(gasolina != null){
+                record.setDateGasolina(gasolina.getDate_updated());
+                record.setGasolina(gasolina.getId_type());
+            }
+            Availability premium = getAvailabilityByType(gasStation.getAvailabilities(), 2);
+            if(premium != null){
+                record.setDatePremium(premium.getDate_updated());
+                record.setPremium(premium.getId_type());
+            }
+            Availability diesel = getAvailabilityByType(gasStation.getAvailabilities(), 3);
+            if(diesel != null){
+                record.setDateDiesel(diesel.getDate_updated());
+                record.setDiesel(diesel.getId_type());
+            }    
+            gasStationsAvailabilities.add(record);
+        }
+        return gasStationsAvailabilities;
+    }
+    private Availability getAvailabilityByType(Set<Availability> availabilities, Integer type){
+        for (Availability record : availabilities) {
+            if(record.getId_type() == type){
+                return record;
+            }
+        }
+        return null;
+    }
+
 
 }
 

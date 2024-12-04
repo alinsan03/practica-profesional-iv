@@ -48,3 +48,6 @@ The tools that will be used for the development of this project will be:<br>
 ## add Project Architechture:
 
 ![project_architechture](https://github.com/user-attachments/assets/100eceba-9109-4138-98a9-df621101f04f)
+
+## Add team standards:
+<img width="437" alt="team standards" src="https://github.com/user-attachments/assets/4bcf6a03-eaef-4e9d-a163-9637f70e8c1c">

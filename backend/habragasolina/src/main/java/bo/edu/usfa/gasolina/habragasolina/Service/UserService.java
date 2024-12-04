@@ -55,7 +55,7 @@ public class UserService {
     {
         if(userRepository.existsByUsername(userInformation.getUsername())){
             User user = userRepository.findByUsername(userInformation.getUsername());
-            if(user.getPassword() == Security.hashPassword(userInformation.getPassword()))
+            if(user.getPassword().equals(Security.hashPassword(userInformation.getPassword())))
             {
                 return user;
             }

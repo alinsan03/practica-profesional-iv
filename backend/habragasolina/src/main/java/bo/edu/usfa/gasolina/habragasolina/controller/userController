@@ -1,0 +1,29 @@
+package com.example.demo.controller;
+
+import com.example.demo.service.UserService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/user")
+public class UserController {
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deactivateUser(@PathVariable Integer id) {
+        try {
+            userService.deactivateUser(id);
+            return ResponseEntity.ok("User deactivated successfully.");
+        } catch (RuntimeException e) {
+            if (e.getMessage().contains("not found")) {
+                return ResponseEntity.status(404).body(e.getMessage());
+            }
+            return ResponseEntity.status(400).body(e.getMessage());
+        }
+    }
+}

@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import bo.edu.usfa.gasolina.habragasolina.Entities.Authentication;
 import bo.edu.usfa.gasolina.habragasolina.Entities.User;
 import bo.edu.usfa.gasolina.habragasolina.Service.UserService;
 
@@ -47,6 +48,12 @@ public class UserController {
         }
     }
    
+   @PostMapping("/login")
+   public ResponseEntity<User> aunthenticateUser(@RequestBody Authentication user){
+    User newUser = userService.Authenticate(user);
+    return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+   }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deactivateUser(@PathVariable Long id) {
         try {

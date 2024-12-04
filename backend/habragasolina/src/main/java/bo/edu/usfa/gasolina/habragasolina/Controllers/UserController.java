@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import bo.edu.usfa.gasolina.habragasolina.Entities.User;
 import bo.edu.usfa.gasolina.habragasolina.Service.UserService;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -46,4 +47,16 @@ public class UserController {
         }
     }
    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deactivateUser(@PathVariable Long id) {
+        try {
+            userService.deactivateUser(id);
+            return ResponseEntity.ok("User deactivated successfully.");
+        } catch (RuntimeException e) {
+            if (e.getMessage().contains("not found")) {
+                return ResponseEntity.status(404).body(e.getMessage());
+            }
+            return ResponseEntity.status(400).body(e.getMessage());
+        }
+    }
 }

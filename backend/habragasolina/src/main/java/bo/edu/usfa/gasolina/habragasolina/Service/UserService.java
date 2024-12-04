@@ -61,4 +61,12 @@ public class UserService {
         return false;
     }
     
+    public void deactivateUser(Long id)
+    {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("User not found, id: " + id);
+        }
+    }
 }

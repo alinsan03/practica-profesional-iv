@@ -5,6 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+
+import java.util.Set;
+
 import jakarta.persistence.Column;
 
 @Entity
@@ -20,6 +25,10 @@ public class GasStation {
 
     @Column(nullable = false)
     private String location;
+
+    @OneToMany
+    @JoinColumn(name = "id_gas_station")
+    private Set<Availability> availabilities;
 
     public Integer getId() {
         return id;
@@ -44,4 +53,13 @@ public class GasStation {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public Set<Availability> getAvailabilities() {
+        return availabilities;
+    }
+
+    public void setAvailabilities(Set<Availability> availabilities) {
+        this.availabilities = availabilities;
+    }
+    
 }

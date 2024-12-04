@@ -4,8 +4,6 @@ import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 import bo.edu.usfa.gasolina.habragasolina.Service.GasStationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/gasstation")
@@ -48,6 +46,15 @@ public class GasStationController {
             return ResponseEntity.status(404).build();
         }
     }    
+
+    @GetMapping("/availability")
+    public ResponseEntity<Object> getGasStationAvailability() {
+        try {
+            return ResponseEntity.ok(gasStationService.getGasStationAvailability());
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error fetching gas station availability: " + e.getMessage());
+        }
+    }
 
 }
 

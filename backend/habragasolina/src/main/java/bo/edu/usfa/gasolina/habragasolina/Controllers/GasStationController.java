@@ -38,6 +38,16 @@ public class GasStationController {
             return ResponseEntity.status(404).body(e.getMessage());
         }
     }
-    
+
+    @GetMapping("/{id}")
+    public ResponseEntity<GasStation> getGasStation(@PathVariable Integer id) {
+        try {
+            GasStation gasStation = gasStationService.getGasStation(id);
+            return ResponseEntity.ok(gasStation);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(404).build();
+        }
+    }    
+
 }
 

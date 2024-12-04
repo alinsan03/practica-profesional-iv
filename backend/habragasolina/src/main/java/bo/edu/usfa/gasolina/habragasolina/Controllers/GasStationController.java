@@ -4,9 +4,11 @@ import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 import bo.edu.usfa.gasolina.habragasolina.Service.GasStationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("/api/gasstation")
+@RequestMapping("/gasstation")
 public class GasStationController {
 
     private final GasStationService gasStationService;
@@ -15,6 +17,18 @@ public class GasStationController {
         this.gasStationService = gasStationService;
     }
 
+    @PostMapping("")
+    public ResponseEntity<GasStation> saveGasStation(@RequestBody GasStation gasStation) {
+        GasStation newGasStation = gasStationService.saveGasStation(gasStation);
+        return ResponseEntity.ok(newGasStation);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<GasStation> updateGasStation(@PathVariable Integer id, @RequestBody GasStation gasStation) {
+        GasStation updatedGasStation = gasStationService.updateGasStation(id, gasStation);
+        return ResponseEntity.ok(updatedGasStation);
+    }
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteGasStation(@PathVariable Integer id) {
         try {
@@ -34,5 +48,6 @@ public class GasStationController {
             return ResponseEntity.status(404).build();
         }
     }    
+
 }
 

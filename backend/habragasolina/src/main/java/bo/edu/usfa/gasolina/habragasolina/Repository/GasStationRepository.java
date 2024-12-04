@@ -5,4 +5,5 @@ import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 
 @Repository
 public interface GasStationRepository extends JpaRepository <GasStation, Integer> {
+    boolean existsByName(String username);
 }

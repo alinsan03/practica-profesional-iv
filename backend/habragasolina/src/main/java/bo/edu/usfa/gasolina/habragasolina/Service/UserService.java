@@ -63,4 +63,23 @@ public class UserService {
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username or password invalid");
     }
     
+    public boolean updateUser(Long id, User user) {
+        if (userRepository.existsById(id)) {
+            User existingUser = userRepository.findById(id).get();
+            existingUser.setPassword(Security.hashPassword(user.getPassword()));
+            existingUser.setName(user.getName());
+            userRepository.save(existingUser);
+            return true;
+        }
+        return false;
+    }
+    
+    public void deactivateUser(Long id)
+    {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("User not found, id: " + id);
+        }
+    }
 }

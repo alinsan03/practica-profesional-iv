@@ -56,5 +56,40 @@ public class GasStationController {
         }
     }
 
+    @PostMapping("/{id}/availability")
+    public ResponseEntity<String> updateAvailability(@PathVariable Integer id, @RequestBody AvailabilityRequest request) {
+        try {
+            gasStationService.updateAvailability(id, request.getIdFuelType(), request.getIdStatus());
+            return ResponseEntity.ok("Availability updated successfully");
+        } catch (RuntimeException e) {
+            if ("GasStation not found".equals(e.getMessage())) {
+                return ResponseEntity.status(404).body(e.getMessage());
+            } else if ("FuelType or Status not valid".equals(e.getMessage())) {
+                return ResponseEntity.status(400).body(e.getMessage());
+            }
+            return ResponseEntity.status(500).body("Internal server error");
+        }
+    }
+    public static class AvailabilityRequest {
+        private Integer idFuelType;
+        private Integer idStatus;
+
+        public Integer getIdFuelType() {
+            return idFuelType;
+        }
+
+        public void setIdFuelType(Integer idFuelType) {
+            this.idFuelType = idFuelType;
+        }
+
+        public Integer getIdStatus() {
+            return idStatus;
+        }
+
+        public void setIdStatus(Integer idStatus) {
+            this.idStatus = idStatus;
+        }
+    }
+
 }
 

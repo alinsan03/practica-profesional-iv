@@ -102,6 +102,23 @@ public class GasStationService {
         return null;
     }
 
+    public void updateAvailability(Integer gasStationId, Integer idFuelType, Integer idStatus) {
+        GasStation gasStation = gasStationRepository.findById(gasStationId)
+                .orElseThrow(() -> new RuntimeException("GasStation not found"));
+
+        if (idFuelType == null || idFuelType <= 0 || idStatus == null || idStatus <= 0) {
+            throw new RuntimeException("FuelType or Status not valid");
+        }
+
+        Availability availability = new Availability();
+        availability.setId_gas_station(gasStation.getId());
+        availability.setId_type(idFuelType);
+        availability.setId_status(idStatus);
+        availability.setDate_updated(java.time.LocalDateTime.now());
+
+        availabilityRepository.save(availability);
+    }
+
 
 }
 

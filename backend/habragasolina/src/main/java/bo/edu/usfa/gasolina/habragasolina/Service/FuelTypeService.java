@@ -1,11 +1,10 @@
 package bo.edu.usfa.gasolina.habragasolina.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import bo.edu.usfa.gasolina.habragasolina.Entities.FuelType;
-import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 import bo.edu.usfa.gasolina.habragasolina.Repository.FuelTypeRepository;
 
 @Service
@@ -15,9 +14,8 @@ public class FuelTypeService {
     public FuelTypeService(FuelTypeRepository fuelTypeRepository) {
         this.fuelTypeRepository = fuelTypeRepository;
     }
-    public FuelType getFuelType(Integer id){
-        Optional<FuelType> fuelType = fuelTypeRepository.findById(id);
-        return fuelType.orElseThrow(() -> 
-            new RuntimeException("Fuel type " + id +" not founded"));
+    
+    public List<FuelType> getAllFuelType() {
+        return fuelTypeRepository.findAll();
     }
 }

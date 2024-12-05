@@ -5,5 +5,4 @@ import bo.edu.usfa.gasolina.habragasolina.Entities.FuelType;
 
 @Repository
 public interface FuelTypeRepository extends JpaRepository <FuelType, Integer> {
-    FuelType findById(Integer Id);
 }

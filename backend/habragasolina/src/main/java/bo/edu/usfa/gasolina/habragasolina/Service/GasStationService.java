@@ -5,7 +5,6 @@ import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 import bo.edu.usfa.gasolina.habragasolina.Entities.GasStationAvailability;
 import bo.edu.usfa.gasolina.habragasolina.Repository.AvailabilityRepository;
 import bo.edu.usfa.gasolina.habragasolina.Repository.GasStationRepository;
-import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +14,6 @@ import java.util.Set;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.Optional;
 
 @Service
 public class GasStationService {

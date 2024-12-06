@@ -2,8 +2,8 @@
             <div class="container">
                 <div class="foo-row">
                     <div class="foo-col">
-                        <h2><br>Practica Profecional 4</h2>
-                        <h3>Universidad Privada San francisco de Asís</h3>
+                        <h2><br>Practica Profesional 4</h2>
+                        <h3>Universidad Privada San Francisco de Asís</h3>
                     </div>
                     <div class="foo-col">
                         <ul>

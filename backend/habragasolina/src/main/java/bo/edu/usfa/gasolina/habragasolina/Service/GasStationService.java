@@ -6,7 +6,6 @@ import bo.edu.usfa.gasolina.habragasolina.Entities.GasStationAvailability;
 import bo.edu.usfa.gasolina.habragasolina.Repository.AvailabilityRepository;
 import bo.edu.usfa.gasolina.habragasolina.Repository.GasStationRepository;
 import bo.edu.usfa.gasolina.habragasolina.Repository.UserRepository;
-import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Optional;
 
 @Service
 public class GasStationService {
@@ -100,6 +98,10 @@ public class GasStationService {
         }
         return gasStationsAvailabilities;
     }
+    public List<GasStation> getAllGasStations() {
+        return gasStationRepository.findAll();
+    }
+    
     private Availability getAvailabilityByType(Set<Availability> availabilities, Integer type){
         for (Availability record : availabilities) {
             if(record.getId_type() == type){

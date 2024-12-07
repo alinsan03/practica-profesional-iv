@@ -5,6 +5,8 @@ import bo.edu.usfa.gasolina.habragasolina.Service.GasStationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/gasstation")
 public class GasStationController {
@@ -46,6 +48,17 @@ public class GasStationController {
             return ResponseEntity.status(404).build();
         }
     }    
+    
+    @GetMapping("")
+    public ResponseEntity<List<GasStation>> getAllGasStations() {
+        try {
+            List<GasStation> gasStations = gasStationService.getAllGasStations(); 
+            return ResponseEntity.ok(gasStations);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(null); 
+        }
+    }
+
 
     @GetMapping("/availability")
     public ResponseEntity<Object> getGasStationAvailability() {

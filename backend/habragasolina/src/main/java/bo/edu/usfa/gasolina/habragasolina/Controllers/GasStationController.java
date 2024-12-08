@@ -5,6 +5,10 @@ import bo.edu.usfa.gasolina.habragasolina.Service.GasStationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/gasstation")
 public class GasStationController {
@@ -46,6 +50,16 @@ public class GasStationController {
             return ResponseEntity.status(404).build();
         }
     }    
+    
+    @GetMapping("/gasstations")
+    public ResponseEntity<Map<String, Object>> getAllGasStations() {
+        List<GasStation> gasStations = gasStationService.getAllGasStations();
+       Map<String, Object> response = new HashMap<>();
+       response.put("data", gasStations);
+       return ResponseEntity.ok(response);
+        }
+    
+
 
     @GetMapping("/availability")
     public ResponseEntity<Object> getGasStationAvailability() {

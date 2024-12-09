@@ -3,28 +3,28 @@
 	<div class="container">
     <div class="admin-page">
 		<br>
-		<br>
+		<br> 
         <div class="label-group">
             <label for="label1">User:</label>
-			<label for="label1">label.</label>
+			<label for="label1">{{$user->name}}</label>
         </div>
         <div class="label-group">
             <label for="label2">Station:</label>
-            <label for="label">Label.</label>
+            <label for="label">{{$station->name}}</label>
         </div>
         <div class="label-group">
             <label for="dropdown">Fuel type:</label>
             <select id="dropdown">
                 <option value="">Select an option:</option>
-                <option value="option1">Regular Gasoline</option>
-                <option value="option2">Premium Gasoline</option>
-                <option value="option3">Diesel</option>
+                @foreach ($fuel_type as $row)
+                <option value="option{{$row->id}}">{{$row->name}}</option>              
+                @endforeach
             </select>
         </div>
         <div class="buttons">
-            <button>Available</button>
-            <button>Just</button>
-            <button>Don't sell</button>
+            <button><a href="">Available</a></button>
+            <button><a href="">Just</a></button>
+            <button><a href="">Don't sell</a></button>
         </div>
         <div class="return-link">
             <a href="/habragasolina-web/resources/views/welcome.blade.php">Return</a>

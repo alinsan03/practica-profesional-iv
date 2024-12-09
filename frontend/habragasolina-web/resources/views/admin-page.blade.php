@@ -5,11 +5,11 @@
 		<br>
 		<br>
         <div class="label-group">
-            <label for="label1">Label 1:</label>
+            <label for="label1">User:</label>
 			<label for="label1">label.</label>
         </div>
         <div class="label-group">
-            <label for="label2">Label 2:</label>
+            <label for="label2">Station:</label>
             <label for="label">Label.</label>
         </div>
         <div class="label-group">

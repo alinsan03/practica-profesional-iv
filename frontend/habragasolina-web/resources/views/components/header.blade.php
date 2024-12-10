@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,9 +26,9 @@
                     </div>
                     <nav class="hm-menu">
                         <ul>
-                            <li><a href="index.php">Home</a></li>                                        
-                            <li><a href="login.php">Login</a></li>                         
-                            <li><a href="logout.php">Sign Off</a></li>    
+                            <li><a href="index.php">Inicio</a></li>                                        
+                            <li><a href="login.php">Iniciar Sección </a></li>                         
+                            <li><a href="logout.php">Cerrar Sección</a></li>    
                         </ul>
                     </nav>
                 </div>

@@ -27,3 +27,37 @@
     </div>
 </body>
 @include('components.footer')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Stations</title>
+</head>
+<body>
+    <h1>Gas Stations Availability</h1>
+
+    @if (!empty($gasStations))
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Availability</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($gasStations as $gasStation)
+                    <tr>
+                        <td>{{ $gasStation['id'] }}</td>
+                        <td>{{ $gasStation['name'] }}</td>
+                        <td>{{ $gasStation['availability'] }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p>No data available</p>
+    @endif
+</body>
+</html>

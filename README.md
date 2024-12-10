@@ -51,3 +51,15 @@ The tools that will be used for the development of this project will be:<br>
 
 ## Add team standards:
 <img width="437" alt="team standards" src="https://github.com/user-attachments/assets/4bcf6a03-eaef-4e9d-a163-9637f70e8c1c">
+
+## Laravel
+The following are the commands that are used to install and use Laravel:
+```
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows/8.3'))
+```
+Find the file php.ini, and modify the variables to be: variables_order = "GPCS"
+
+To run the application:
+- Only the first time, on the root folder of the project  composer dump-autoload
+- To run, composer dev run
+- To exit, Ctrl + C

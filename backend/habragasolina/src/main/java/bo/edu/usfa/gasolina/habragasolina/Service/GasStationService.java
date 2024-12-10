@@ -3,8 +3,8 @@ package bo.edu.usfa.gasolina.habragasolina.Service;
 import bo.edu.usfa.gasolina.habragasolina.Entities.Availability;
 import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 import bo.edu.usfa.gasolina.habragasolina.Entities.GasStationAvailability;
-import bo.edu.usfa.gasolina.habragasolina.Repository.AvailabilityRepository;
 import bo.edu.usfa.gasolina.habragasolina.Repository.GasStationRepository;
+import bo.edu.usfa.gasolina.habragasolina.Repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +20,11 @@ import org.springframework.web.server.ResponseStatusException;
 public class GasStationService {
 
     private final GasStationRepository gasStationRepository;
-    private final AvailabilityRepository availabilityRepository;
+    private final UserRepository userRepository;
 
-    public GasStationService(GasStationRepository gasStationRepository, AvailabilityRepository availabilityRepository) {
+    public GasStationService(GasStationRepository gasStationRepository, UserRepository userRepository) {
         this.gasStationRepository = gasStationRepository;
-        this.availabilityRepository = availabilityRepository;
+        this.userRepository = userRepository;
     }
 
     public GasStation updateGasStation(Integer id, GasStation updatedGasStation) {
@@ -41,6 +41,7 @@ public class GasStationService {
     public GasStation saveGasStation(GasStation gasStation) {
         if(gasStation.getName().length() <= 3 ){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Name must be longer than 3 characters");
+        // bad request es 400 para la validacion.
         }
         if(gasStation.getName().length() > 100){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Name can't be longer than 100 characters");
@@ -52,12 +53,17 @@ public class GasStationService {
     }
 
     public void deleteGasStation(Integer id) {
+        if (userRepository.existsByGasStationId(id)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "You cannot delete the Gas Station with users");
+        }
         if (gasStationRepository.existsById(id)) {
             gasStationRepository.deleteById(id);
         } else {
             throw new RuntimeException("Gas station not found, id: " + id);
         }
     }
+
 
     public GasStation getGasStation(Integer id){
         Optional<GasStation> gasStation = gasStationRepository.findById(id);
@@ -91,6 +97,10 @@ public class GasStationService {
         }
         return gasStationsAvailabilities;
     }
+    public List<GasStation> getAllGasStations() {
+        return gasStationRepository.findAll();
+    }
+    
     private Availability getAvailabilityByType(Set<Availability> availabilities, Integer type){
         for (Availability record : availabilities) {
             if(record.getId_type() == type){

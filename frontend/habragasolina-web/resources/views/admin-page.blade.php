@@ -21,13 +21,14 @@
                 @endforeach
             </select>
         </div>
-        <div class="buttons">
-            <button><a href="">Available</a></button>
-            <button><a href="">Just</a></button>
-            <button><a href="">Don't sell</a></button>
+        <div class="available">
+            <button><a href="">Disponible</a></button>
         </div>
-        <div class="return-link">
-            <a href="/habragasolina-web/resources/views/welcome.blade.php">Return</a>
+        <div class="notavailable">
+            <button><a href="">No disponible</a></button>
+        </div>
+        <div class="notsale">       
+            <button><a href="">No se vende</a></button>
         </div>
     </div>
 	</div>

@@ -31,11 +31,11 @@ public class Status {
         this.id = id;
     }
 
-    public String getNameStatus() {
+    public String getName() {
         return name;
     }
 
-    public void setNameStatus(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

@@ -21,11 +21,11 @@
                     <td>{{ $station['name'] }}</td>
                     <td>{{ $station['location'] }}</td>
                     <td>{{ getFuelStatus($station['gasolina']) }}</td>
-                    <td>{{ $station['dateGasolina'] ? date('Y-m-d', strtotime($station['dateGasolina'])) : 'N\A' }}</td>
+                    <td>{{ $station['dateGasolina'] ? date('Y-m-d h:i', strtotime($station['dateGasolina'])) : 'N\A' }}</td>
                     <td>{{ getFuelStatus($station['premium']) }}</td>
-                    <td>{{ $station['datePremium'] ? date('Y-m-d', strtotime($station['datePremium'])) : 'N\A' }}</td>
+                    <td>{{ $station['datePremium'] ? date('Y-m-d h:i', strtotime($station['datePremium'])) : 'N\A' }}</td>
                     <td>{{ getFuelStatus($station['diesel']) }}</td>
-                    <td>{{ $station['dateDiesel'] ? date('Y-m-d', strtotime($station['dateDiesel'])) : 'N\A' }}</td>
+                    <td>{{ $station['dateDiesel'] ? date('Y-m-d h:i', strtotime($station['dateDiesel'])) : 'N\A' }}</td>
                 </tr>
                 @endforeach
             </tbody>

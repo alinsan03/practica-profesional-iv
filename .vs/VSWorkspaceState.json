@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\habragasolina",
+    "\\backend\\habragasolina\\src",
+    "\\backend\\habragasolina\\src\\main",
+    "\\backend\\habragasolina\\src\\main\\java",
+    "\\backend\\habragasolina\\src\\test",
+    "\\example-springboot",
+    "\\frontend",
+    "\\frontend\\habragasolina-web"
+  ],
+  "SelectedNode": "\\example-springboot\\habragasolina",
+  "PreviewInSolutionExplorer": false
+}

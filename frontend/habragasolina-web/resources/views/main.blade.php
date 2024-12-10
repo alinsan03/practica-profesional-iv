@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $station)
+                @foreach ($gasStations as $station)
                 <tr>
                     <td>{{ $station['name'] }}</td>
                     <td>{{ $station['location'] }}</td>

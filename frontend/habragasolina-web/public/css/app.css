@@ -1,7 +1,7 @@
 :root{
     --color-principal: #FF5A5F;
     --color-primary-hover: #d64246;
-    --color-verde:#04A75B;
+    --color-verde: #04A75B;
     --color-negro: #444A47;
     --color-fondo: #F7F9FD;
     --color-footer: #151515;
@@ -16,18 +16,6 @@
     margin: 0;
 }
 
-body{
-    font-family: 'Poppins', sans-serif;
-}
-
-.hm-wrapper{
-    position: relative;
-}
-
-.hm-wrapper, body{
-    min-height: 100%;
-}
-
 a{
     text-decoration: none;
 }
@@ -38,11 +26,113 @@ ul,ol{
 
 img{
     padding-top: 20px;
-    width: 150%;
-    height: 150%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     vertical-align: middle;
     border-style: none;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #ffab0f;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 8px;
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+button.ok, button.available, button.notavailable, button.notsale {
+    padding: 12px 25px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 25px;
+    text-align: center;
+}
+
+button.ok {
+    background-color: var(--color-verde);
+    color: white;
+}
+
+button.ok:hover {
+    background-color: #028347;
+}
+
+button.available {
+    background-color: #2196F3;
+    color: white;
+}
+
+button.available:hover {
+    background-color: #085ca1;
+}
+
+button.notavailable {
+    background-color: #f44336;
+    color: white;
+}
+
+button.notavailable:hover {
+    background-color: #bd302e;
+}
+
+button.notsale {
+    background-color: #9E9E9E;
+    color: white;
+}
+
+button.notsale:hover {
+    background-color: #686767;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 15px 0;
+    color: #555;
+}
+
+p.justify {
+    text-align: justify;
 }
 
 .container{
@@ -59,40 +149,8 @@ img{
 }
 
 .uppercase{
-
     text-transform: uppercase !important;
 }
-
-h3{
-    color: #F7F9FD;
-}
-
-/* buttoms*/
-
-.hm-btn{
-    display: inline-block;
-    position: relative;
-    padding: 12px 25px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    outline: 0;
-
-}
-
-.btn-primary{
-    background: var(--color-principal);
-    color: #fff;
-    border-radius: 25px;
-    text-align: center;
-}
-
-.btn-primary:hover{
-    background: var(--color-primary-hover);
-}
-
-/* Header*/
 
 .hm-header{
     position: relative;
@@ -108,6 +166,7 @@ h3{
     margin-bottom: 20px;
     box-sizing: border-box;
 }
+
 .hm-header .container{
     height: 100%;
 }
@@ -119,7 +178,7 @@ h3{
     align-items: center;
 }
 
-.header-menu .hm-logo{
+.hm-logo{
     width: 100px;
 }
 
@@ -143,11 +202,9 @@ h3{
     color: var(--color-principal);
 }
 
-/* Fooder*/
-
 footer{
-    background: #151515;
-    padding: 80px 0px;
+    background: var(--color-footer);
+    padding: 80px 0;
 }
 
 footer .foo-row{
@@ -191,7 +248,7 @@ footer .foo-row .foo-col ul li a:hover{
 
 .foo-copy{
     background: #000000;
-    padding: 40px 0px;
+    padding: 40px 0;
 }
 
 .foo-copy p{
@@ -201,10 +258,7 @@ footer .foo-row .foo-col ul li a:hover{
     font-weight: 300;
 }
 
-/* Responsive dising*/
-
 @media screen and (max-width: 800px){
-    
     footer .foo-row{
         flex-direction: column;
     }

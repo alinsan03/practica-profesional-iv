@@ -1,4 +1,4 @@
-@include('components.header')
+@include('components.headerMain')
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Habrá Gasolina</h1>
@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $station)
+                @foreach ($gasStations as $station)
                 <tr>
                     <td>{{ $station['name'] }}</td>
                     <td>{{ $station['location'] }}</td>

@@ -22,10 +22,13 @@ public class GasStationService {
 
     private final GasStationRepository gasStationRepository;
     private final UserRepository userRepository;
+    private final AvailabilityRepository availabilityRepository;
 
-    public GasStationService(GasStationRepository gasStationRepository, UserRepository userRepository) {
+    public GasStationService(GasStationRepository gasStationRepository, UserRepository userRepository, AvailabilityRepository availabilityRepository) {
         this.gasStationRepository = gasStationRepository;
         this.userRepository = userRepository;
+        this.availabilityRepository = availabilityRepository;
+
     }
 
     public GasStation updateGasStation(Integer id, GasStation updatedGasStation) {
@@ -109,6 +112,28 @@ public class GasStationService {
             }
         }
         return null;
+    }
+
+    public void upsertAvailability(Integer gasStationId, Integer idFuelType, Integer idStatus) {
+        GasStation gasStation = gasStationRepository.findById(gasStationId)
+                .orElseThrow(() -> new RuntimeException("GasStation not found"));
+    
+        if (idFuelType == null || idFuelType <= 0 || idStatus == null || idStatus <= 0) {
+            throw new RuntimeException("FuelType or Status not valid");
+    
+        }
+        
+        Availability availability = availabilityRepository.findById_gas_stationAndId_type(gasStationId, idFuelType);
+        if(availability==null)
+        {
+            availability = new Availability();
+            availability.setId_gas_station(gasStation.getId());
+            availability.setId_type(idFuelType);            
+        }
+        availability.setId_status(idStatus);
+        availability.setDate_updated(java.time.LocalDateTime.now());
+    
+        availabilityRepository.save(availability);
     }
 
 

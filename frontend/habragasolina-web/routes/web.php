@@ -29,3 +29,5 @@ Route::get('/', function () {
     
     return view('main', compact('data'));
 });
+
+Route::get('/login');

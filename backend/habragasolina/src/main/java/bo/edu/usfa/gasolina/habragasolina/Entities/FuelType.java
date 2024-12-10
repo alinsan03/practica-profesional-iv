@@ -14,10 +14,10 @@ public class FuelType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_fuel_type")
+    @Column(name = "id_fuel")
     private Integer id;
 
-    @Column(name = "name_fuel_type", nullable = false )
+    @Column(name = "name", nullable = false )
     private String name;
 
     @Column(name = "price", nullable = false )

@@ -23,16 +23,16 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $row)
+                @foreach ($data as $station)
                 <tr>
-                    <td>{{ $row['name'] }}</td>
-                    <td>{{ $row['location'] }}</td>
-                    <td>{{ $row['gasolina'] ?? 'N/A' }}</td>
-                    <td>{{ $row['dateGasolina'] ?? 'N/A' }}</td>
-                    <td>{{ $row['premium'] ?? 'N/A' }}</td>
-                    <td>{{ $row['datePremium'] ?? 'N/A' }}</td>
-                    <td>{{ $row['diesel'] ?? 'N/A' }}</td>
-                    <td>{{ $row['dateDiesel'] ?? 'N/A' }}</td>
+                    <td>{{ $station['name'] }}</td>
+                    <td>{{ $station['location'] }}</td>
+                    <td>{{ getFuelStatus($station['gasolina']) }}</td>
+                    <td>{{ $station['dateGasolina'] ? date('Y-m-d', strtotime($station['dateGasolina'])) : 'N\A' }}</td>
+                    <td>{{ getFuelStatus($station['premium']) }}</td>
+                    <td>{{ $station['datePremium'] ? date('Y-m-d', strtotime($station['datePremium'])) : 'N\A' }}</td>
+                    <td>{{ getFuelStatus($station['diesel']) }}</td>
+                    <td>{{ $station['dateDiesel'] ? date('Y-m-d', strtotime($station['dateDiesel'])) : 'N\A' }}</td>
                 </tr>
                 @endforeach
             </tbody>

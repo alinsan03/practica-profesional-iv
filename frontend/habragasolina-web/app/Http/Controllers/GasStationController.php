@@ -3,21 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http; // Usamos Http para hacer peticiones HTTP
+use Illuminate\Support\Facades\Http;
 
 class GasStationController extends Controller
 {
     public function index()
     {
-        // Llamada al API del backend
-        $response = Http::get('http://localhost:8080/gasstations/availability');
 
-        // Verificamos si la respuesta fue exitosa
+        $response = Http::get('http://localhost:8080/gasstation/availability');
+
+
         if ($response->successful()) {
-            $gasStations = $response->json(); // Convertimos la respuesta a un array JSON
-            return view('main', compact('gasStations')); // Pasamos los datos a la vista.
+            $gasStations = $response->json(); 
+            return view('main', compact('gasStations')); 
         }
 
-        return view ('main', ['gasStations' => []]); // En caso de error, pasamos un array vacío
+        return view ('main', ['gasStations' => []]); 
     }
 }

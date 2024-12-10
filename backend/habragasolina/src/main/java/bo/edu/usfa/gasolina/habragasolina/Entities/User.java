@@ -10,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -20,13 +22,18 @@ public class User {
     @Column(name = "id_user")
     private Integer id;
 
+    @NotNull(message = "El usuario no puede ser nulo.")
     @Column(nullable = false, unique = true)
+    @Size(min = 3, max = 50, message = "El nombre de usuario debe de estar entre 4 y 50 caractéres.")
     private String username;
 
+    @NotNull(message = "La contraseña no puede ser nula")
     @Column(nullable = false)
+    @Size(min = 8, message = "La contraseña no debe ser menor a 8 caractéres.")
     private String password;
 
     @Column(nullable = true)
+    @Size (min=3, max=100, message= ".")
     private String name;
     
     @CreationTimestamp

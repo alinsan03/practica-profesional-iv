@@ -8,8 +8,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
-import java.util.Set;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
+import java.util.Set;
 import jakarta.persistence.Column;
 
 @Entity
@@ -21,14 +23,18 @@ public class GasStation {
     private Integer id;
 
     @Column(nullable = false)
+    @NotNull(message = "Name of gas station cannot be null")
+    @Size(min = 3, max = 100, message = "Name must be between 3 and 100 characters")
     private String name;
 
     @Column(nullable = false)
+    @Size(max=255, message="Location cannot exceed 255 characters")
     private String location;
 
     @OneToMany
-    @JoinColumn(name = "id_gas_station")
+    @JoinColumn(name="id_gas_station")
     private Set<Availability> availabilities;
+
 
     public Integer getId() {
         return id;

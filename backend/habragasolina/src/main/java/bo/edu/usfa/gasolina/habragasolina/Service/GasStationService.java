@@ -121,8 +121,8 @@ public class GasStationService {
         return null;
     }
 
-    public void upsertAvailability(Integer gasStationId, Integer idFuelType, Integer idStatus) {
-        GasStation gasStation = gasStationRepository.findById(gasStationId)
+    public void upsertAvailability(Integer IdGasStation, Integer idFuelType, Integer idStatus) {
+        GasStation gasStation = gasStationRepository.findById(IdGasStation)
                 .orElseThrow(() -> new RuntimeException("GasStation not found"));
 
         Status status = statusRepository.findById(idStatus)
@@ -131,23 +131,23 @@ public class GasStationService {
         FuelType fuelType= fuelTypeRepository.findById(idFuelType)
                 .orElseThrow(() -> new RuntimeException("FuelType not found"));
 
-        if (gasStationId == null || gasStationId < 0 || idFuelType == null || idFuelType <= 0 || idStatus == null || idStatus <= 0) {
+        if (IdGasStation == null || IdGasStation < 0 || idFuelType == null || idFuelType <= 0 || idStatus == null || idStatus <= 0) {
             throw new RuntimeException("FuelType or Status or GasStation not valid");
         }
 
-        Availability availability = availabilityRepository.findById_gas_stationAndId_type(gasStationId, idFuelType);
-        if(availability==null)
+        Availability availability = new Availability();
+        if(availabilityRepository.existsByGasStationId(IdGasStation) == null)
         {
-            availability = new Availability();
-            availability.setId_gas_station(gasStationId);
+            availability.setId_gas_station(IdGasStation);
             availability.setId_type(idFuelType);
+            availability.setId_status(idStatus);
                         
+        } else {
+            availability.setId_gas_station(gasStation.getId());
+            availability.setId_status(status.getId());
+            availability.setId_type(fuelType.getId());
+            availability.setDate_updated(java.time.LocalDateTime.now());
         }
-        availability.setId_gas_station(gasStation.getId());
-        availability.setId_status(status.getId());
-        availability.setId_fuel_type(fuelType.getId());
-        availability.setDate_updated(java.time.LocalDateTime.now());
-
         availabilityRepository.save(availability);
     }
 

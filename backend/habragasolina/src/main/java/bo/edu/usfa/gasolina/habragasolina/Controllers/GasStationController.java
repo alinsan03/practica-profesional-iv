@@ -1,6 +1,7 @@
 package bo.edu.usfa.gasolina.habragasolina.Controllers;
 
 import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
+import bo.edu.usfa.gasolina.habragasolina.Request.AvailabilityRequest;
 import bo.edu.usfa.gasolina.habragasolina.Service.GasStationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -67,6 +68,23 @@ public class GasStationController {
             return ResponseEntity.ok(gasStationService.getGasStationAvailability());
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error fetching gas station availability: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/{id}/availability")
+    public ResponseEntity<String> updateAvailability(
+            @PathVariable Integer id,
+            @RequestBody AvailabilityRequest request) {
+        try {
+            gasStationService.upsertAvailability(id, request.getIdFuelType(), request.getIdStatus());
+            return ResponseEntity.ok("Availability updated successfully");
+        } catch (RuntimeException e) {
+            if ("GasStation not found".equals(e.getMessage())) {
+                return ResponseEntity.status(404).body(e.getMessage());
+            } else if ("FuelType or Status not valid".equals(e.getMessage())) {
+                return ResponseEntity.status(400).body(e.getMessage());
+            }
+            return ResponseEntity.status(500).body("Internal server error");
         }
     }
 

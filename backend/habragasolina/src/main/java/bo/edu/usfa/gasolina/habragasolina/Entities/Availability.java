@@ -29,6 +29,9 @@ public class Availability {
     @JoinColumn(name = "id_status", referencedColumnName = "id_status", nullable = false)
     private Integer id_status;
 
+    @JoinColumn(name = "id_fuel_type", referencedColumnName = "id_fuel_type", nullable = false)
+    private Integer id_fuel_type;
+
     @Column(nullable = false)
     private LocalDateTime date_updated;
 
@@ -64,6 +67,22 @@ public class Availability {
 
     public void setDate_updated(LocalDateTime date_updated) {
         this.date_updated = date_updated;
+    }
+
+    public Integer getId_gas_station() {
+        return id_gas_station;
+    }
+
+    public void setId_gas_station(Integer id_gas_station) {
+        this.id_gas_station = id_gas_station;
+    }
+
+    public Integer getId_fuel_type() {
+        return id_fuel_type;
+    }
+
+    public void setId_fuel_type(Integer id_fuel_type) {
+        this.id_fuel_type = id_fuel_type;
     }
 
 

@@ -1,28 +1,23 @@
 package bo.edu.usfa.gasolina.habragasolina.Entities;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
 import jakarta.persistence.Id;
-import jakarta.persistence.Column;
 
-@Entity
-@Table(name = "statuses")
-public class Status {
+public class FuelType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_status")
+    @Column(name = "id_fuel_type")
     private Integer id;
 
-    @Column(name = "name_status", nullable = false )
+    @Column(name = "name_fuel_type", nullable = false )
     private String name;
 
-    @Column(name = "description", nullable = false )
+    @Column(name = "price", nullable = false )
     private String description;
 
-    // Getters y Setters
     public Integer getId() {
         return id;
     }
@@ -46,4 +41,6 @@ public class Status {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+
 }

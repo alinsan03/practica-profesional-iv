@@ -15,9 +15,9 @@ class GasStationController extends Controller
         // Verificamos si la respuesta fue exitosa
         if ($response->successful()) {
             $gasStations = $response->json(); // Convertimos la respuesta a un array JSON
-            return view('welcome', compact('gasStations')); // Pasamos los datos a la vista.
+            return view('main', compact('gasStations')); // Pasamos los datos a la vista.
         }
 
-        return view('welcome', ['gasStations' => []]); // En caso de error, pasamos un array vacío
+        return view ('main', ['gasStations' => []]); // En caso de error, pasamos un array vacío
     }
 }

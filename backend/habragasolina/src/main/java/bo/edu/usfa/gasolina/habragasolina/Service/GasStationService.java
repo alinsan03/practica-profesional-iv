@@ -3,7 +3,6 @@ package bo.edu.usfa.gasolina.habragasolina.Service;
 import bo.edu.usfa.gasolina.habragasolina.Entities.Availability;
 import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 import bo.edu.usfa.gasolina.habragasolina.Entities.GasStationAvailability;
-import bo.edu.usfa.gasolina.habragasolina.Repository.AvailabilityRepository;
 import bo.edu.usfa.gasolina.habragasolina.Repository.GasStationRepository;
 import bo.edu.usfa.gasolina.habragasolina.Repository.UserRepository;
 

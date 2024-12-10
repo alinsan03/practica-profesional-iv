@@ -1,4 +1,4 @@
-@include('components.header')
+@include('components.headerMain')
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Habrá Gasolina</h1>

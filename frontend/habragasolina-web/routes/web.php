@@ -26,6 +26,21 @@ Route::get('/', function () {
             "dateDiesel" => null,
         ]
     ];
-    
+
     return view('main', compact('data'));
+});
+
+Route::get('/admin-page', function () {
+    $data = [
+        [
+            "id" => 1,
+            "name" => "Gasolina Especial"
+        ],
+        [
+            "id" => 2,
+            "name" => "Gasolina Premium"
+        ]
+    ];
+
+    return view('admin-page', compact('data'));
 });

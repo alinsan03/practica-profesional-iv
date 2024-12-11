@@ -23,12 +23,12 @@ public class GasStation {
     private Integer id;
 
     @Column(nullable = false)
-    @NotNull(message = "Name of gas station cannot be null")
-    @Size(min = 3, max = 100, message = "Name must be between 3 and 100 characters")
+    @NotNull(message = "El nombre de la estación de gasolinería no puede ser nulo. Por favor intente nuevamente.")
+    @Size(min = 3, max = 100, message = "El nombre debe contener entre 3 y 100 caracteres.")
     private String name;
 
     @Column(nullable = false)
-    @Size(max=255, message="Location cannot exceed 255 characters")
+    @Size(max=255, message="La ubicación no debe exceder los 255 caracteres.")
     private String location;
 
     @OneToMany

@@ -24,12 +24,12 @@ public class User {
 
     @NotNull(message = "El usuario no puede ser nulo.")
     @Column(nullable = false, unique = true)
-    @Size(min = 3, max = 50, message = "El nombre de usuario debe de estar entre 4 y 50 caractéres.")
+    @Size(min = 3, max = 50, message = "El nombre de usuario debe de estar entre 4 y 50 caracteres.")
     private String username;
 
-    @NotNull(message = "La contraseña no puede ser nula")
+    @NotNull(message = "La contraseña no puede ser nula. Por favor intente nuevamente.")
     @Column(nullable = false)
-    @Size(min = 8, message = "La contraseña no debe ser menor a 8 caractéres.")
+    @Size(min = 8, message = "La contraseña no debe ser menor a 8 caracteres.")
     private String password;
 
     @Column(nullable = true)

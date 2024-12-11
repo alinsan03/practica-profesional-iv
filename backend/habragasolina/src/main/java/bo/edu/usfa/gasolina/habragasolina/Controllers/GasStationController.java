@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/gas-station")
+@RequestMapping("gas-station")
 public class GasStationController {
 
     private final GasStationService gasStationService;
@@ -36,7 +36,7 @@ public class GasStationController {
     public ResponseEntity<String> deleteGasStation(@PathVariable Integer id) {
         try {
             gasStationService.deleteGasStation(id);
-            return ResponseEntity.ok("Gas station deleted successfully.");
+            return ResponseEntity.ok("Estación de gas eliminada exitosamente.");
         } catch (RuntimeException e) {
             return ResponseEntity.status(404).body(e.getMessage());
         }
@@ -65,7 +65,7 @@ public class GasStationController {
         try {
             return ResponseEntity.ok(gasStationService.getGasStationAvailability());
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error fetching gas station availability: " + e.getMessage());
+            return ResponseEntity.status(500).body("Error al obtener la disponibilidad de la gasolinera: " + e.getMessage());
         }
     }
 }

@@ -15,7 +15,7 @@
         <div class="label-group">
             <label for="dropdown">Tipo de Gasolina:</label>
             <select id="dropdown">
-                <option value="">Select an option:</option>
+                <option value="">Selecciona una opción:</option>
                 @foreach ($fueltypes as $fuel)
                 <option value="option{{$fuel['id']}}">{{$fuel['name']}}</option>
                 @endforeach
@@ -23,7 +23,7 @@
         </div>
             <div>
                 <center>
-                <table>
+                <table class="no-borders">
                     <tr>
                         <td>
                 <div>
@@ -31,18 +31,18 @@
                 </div>
                         </td>
                         <td>
-        <div>
-            <button  class="notavailable">No disponible</button>
-        </div>
-        </td>
-        <td>
-        <div>
-            <button class="notsale">No se vende</button>
-        </div>
-        </td>
-        </tr>
-        </table>
-        </center>
+                <div>
+                    <button  class="notavailable">No disponible</button>
+                </div>
+                        </td>
+                        <td>
+                <div>
+                    <button class="notsale">No se vende</button>
+                </div>
+                        </td>
+                        </tr>
+                </table>
+                </center>
     </div>
     </div>
 </body>

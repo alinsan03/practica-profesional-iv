@@ -59,6 +59,14 @@ td {
     text-align: center;
 }
 
+.no-borders {
+    border: none;
+}
+
+.no-borders td, .no-borders th {
+    border: none;
+}
+
 input[type="text"] {
     width: 100%;
     padding: 10px;

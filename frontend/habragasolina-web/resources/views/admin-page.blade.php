@@ -21,14 +21,14 @@
                 @endforeach
             </select>
         </div>
-        <div class="available">
-            <button>Disponible</button>
+        <div>
+            <button class="available">Disponible</button>
         </div>
-        <div class="notavailable">
-            <button>No disponible</button>
+        <div>
+            <button  class="notavailable">No disponible</button>
         </div>
-        <div class="notsale">
-            <button>No se vende</button>
+        <div>
+            <button class="notsale">No se vende</button>
         </div>
     </div>
 </body>

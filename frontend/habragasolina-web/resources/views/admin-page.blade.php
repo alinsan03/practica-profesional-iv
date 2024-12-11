@@ -22,13 +22,13 @@
             </select>
         </div>
         <div class="available">
-            <button><a href="">Disponible</a></button>
+            <button>Disponible</button>
         </div>
         <div class="notavailable">
-            <button><a href="">No disponible</a></button>
+            <button>No disponible</button>
         </div>
         <div class="notsale">
-            <button><a href="">No se vende</a></button>
+            <button>No se vende</button>
         </div>
     </div>
 </body>

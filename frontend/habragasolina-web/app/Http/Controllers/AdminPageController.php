@@ -14,10 +14,10 @@ class AdminPageController extends Controller
 
 
         if ($response->successful()) {
-            $fueltypes = $response->json(); 
-            return view('admin-page', compact('fueltypes')); 
+            $fueltypes = $response->json();
+            return view('admin-page', compact('fueltypes'));
         }
 
-        return view ('admin-page', ['fueltypes' => []]); 
+        return view ('admin-page', ['fueltypes' => []]);
     }
 }

@@ -11,4 +11,9 @@ class GasStationLoginController extends Controller
     {
         return view('gas-station-login');
     }
+
+    public function login()
+    {
+
+    }
 }

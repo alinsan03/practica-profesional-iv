@@ -22,12 +22,15 @@ public class Availability {
     @Column(name = "id_availabilities")
     private Integer id;
     
+    @Column(name = "id_gas_station")
     @JoinColumn(name = "id_gas_station", referencedColumnName = "id_gas_station", nullable = false)
     private Integer gasStationId;
 
+    @Column(name = "id_type")
     @JoinColumn(name = "id_type", referencedColumnName = "id_type", nullable = false)
     private Integer typeId;
 
+    @Column(name = "id_status")
     @JoinColumn(name = "id_status", referencedColumnName = "id_status", nullable = false)
     private Integer statusId;
 

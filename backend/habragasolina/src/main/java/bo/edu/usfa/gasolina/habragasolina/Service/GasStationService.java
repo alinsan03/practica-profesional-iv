@@ -122,37 +122,32 @@ public class GasStationService {
     }
 
     public void upsertAvailability(Integer IdGasStation, Integer idType, Integer idStatus) {
-        if (IdGasStation == null || IdGasStation < 0 || idType == null || idType <= 0 || idStatus == null || idStatus <= 0) {
-            throw new RuntimeException("FuelType or Status or GasStation not valid");
+        if (!gasStationRepository.existsById(IdGasStation))
+        {
+            throw new RuntimeException("Gas station not found, id: " + IdGasStation);
         }
+
+        if (!fuelTypeRepository.existsById(idType))
+        {
+            throw new RuntimeException("Fuel type not found, id: " + IdGasStation);
+        }
+
+        if (!statusRepository.existsById(idStatus))
+        {
+            throw new RuntimeException("Status not found, id: " + IdGasStation);
+        }
+
         
-        GasStation gasStation = gasStationRepository.findById(IdGasStation)
-                .orElseThrow(() -> new RuntimeException("GasStation not found"));
-
-        Status status = statusRepository.findById(idStatus)
-                .orElseThrow(() -> new RuntimeException("Status not found"));
-
-        FuelType fuelType= fuelTypeRepository.findById(idType)
-                .orElseThrow(() -> new RuntimeException("FuelType not found"));
-
         Availability availability = availabilityRepository.findByIdGasStationIdAndTypeId(IdGasStation, idType);        
-        //Availability availability = new Availability();
         if(availability == null)
         {
             availability = new Availability();
             availability.setGasStationId(IdGasStation);
-            availability.setTypeId(idType);
-            availability.setStatusId(idStatus);
-                   
-        } else {
-            availability.setGasStationId(gasStation.getId());
-            availability.setStatusId(status.getId());
-            availability.setTypeId(fuelType.getId());
-            availability.setDate_updated(java.time.LocalDateTime.now());
-            
-        }
-        availabilityRepository.save(availability);     
-        
+            availability.setTypeId(idType);           
+        } 
+        availability.setStatusId(idStatus);
+        availability.setDate_updated(java.time.LocalDateTime.now());
+        availabilityRepository.save(availability);          
     }
 
 

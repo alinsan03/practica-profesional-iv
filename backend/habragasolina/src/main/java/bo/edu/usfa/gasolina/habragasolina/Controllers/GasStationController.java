@@ -74,19 +74,18 @@ public class GasStationController {
     }
 
     @PostMapping("/{id}/availability")
-    public ResponseEntity<String> upsertAvailability( @PathVariable Integer id, @RequestBody Availability request) 
-        {
-            try {
-                gasStationService.upsertAvailability(id, request.getTypeId(), request.getStatusId());
-                return ResponseEntity.ok("Availability updated successfully");
-            } catch (RuntimeException e) {
-                if ("GasStation not found".equals(e.getMessage())) {
-                    return ResponseEntity.status(404).body(e.getMessage());
-                } else if ("FuelType or Status not valid".equals(e.getMessage())) {
-                    return ResponseEntity.status(400).body(e.getMessage());
-                }
-                return ResponseEntity.ok("Id: " + id + " id_Type " + request.getTypeId() + " id_Status: " + request.getStatusId());
+    public ResponseEntity<String> upsertAvailability( @PathVariable Integer id, @RequestBody AvailabilityRequest request) {
+        try {
+            gasStationService.upsertAvailability(id, request.getIdFuelType(), request.getIdStatus());
+            return ResponseEntity.ok("Availability updated successfully");
+        } catch (RuntimeException e) {
+            if ("GasStation not found".equals(e.getMessage())) {
+                return ResponseEntity.status(404).body(e.getMessage());
+            } else if ("FuelType or Status not valid".equals(e.getMessage())) {
+                return ResponseEntity.status(400).body(e.getMessage());
             }
+            return ResponseEntity.status(500).body(e.getMessage());
+        }
     }
 
 }

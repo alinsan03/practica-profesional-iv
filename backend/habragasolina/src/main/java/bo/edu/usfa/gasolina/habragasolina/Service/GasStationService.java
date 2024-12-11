@@ -3,8 +3,13 @@ package bo.edu.usfa.gasolina.habragasolina.Service;
 import bo.edu.usfa.gasolina.habragasolina.Entities.Availability;
 import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 import bo.edu.usfa.gasolina.habragasolina.Entities.GasStationAvailability;
+import bo.edu.usfa.gasolina.habragasolina.Entities.Status;
+import bo.edu.usfa.gasolina.habragasolina.Entities.FuelType;
+import bo.edu.usfa.gasolina.habragasolina.Repository.AvailabilityRepository;
+import bo.edu.usfa.gasolina.habragasolina.Repository.FuelTypeRepository;
 import bo.edu.usfa.gasolina.habragasolina.Repository.GasStationRepository;
 import bo.edu.usfa.gasolina.habragasolina.Repository.UserRepository;
+import bo.edu.usfa.gasolina.habragasolina.Repository.StatusRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +26,16 @@ public class GasStationService {
 
     private final GasStationRepository gasStationRepository;
     private final UserRepository userRepository;
+    private final AvailabilityRepository availabilityRepository;
+    private final FuelTypeRepository fuelTypeRepository;
+    private final StatusRepository statusRepository;
 
-    public GasStationService(GasStationRepository gasStationRepository, UserRepository userRepository) {
+    public GasStationService(GasStationRepository gasStationRepository, UserRepository userRepository, AvailabilityRepository availabilityRepository, StatusRepository statusRepository, FuelTypeRepository fuelTypeRepository) {
         this.gasStationRepository = gasStationRepository;
         this.userRepository = userRepository;
+        this.availabilityRepository = availabilityRepository;
+        this.statusRepository = statusRepository;
+        this.fuelTypeRepository = fuelTypeRepository;
     }
 
     public GasStation updateGasStation(Integer id, GasStation updatedGasStation) {
@@ -51,7 +62,7 @@ public class GasStationService {
         }
         return gasStationRepository.save(gasStation);
     }
-
+    
     public void deleteGasStation(Integer id) {
         if (userRepository.existsByGasStationId(id)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -81,17 +92,17 @@ public class GasStationService {
             Availability gasolina = getAvailabilityByType(gasStation.getAvailabilities(), 1);
             if(gasolina != null){
                 record.setDateGasolina(gasolina.getDate_updated());
-                record.setGasolina(gasolina.getId_type());
+                record.setGasolina(gasolina.getTypeId());
             }
             Availability premium = getAvailabilityByType(gasStation.getAvailabilities(), 2);
             if(premium != null){
                 record.setDatePremium(premium.getDate_updated());
-                record.setPremium(premium.getId_type());
+                record.setPremium(premium.getTypeId());
             }
             Availability diesel = getAvailabilityByType(gasStation.getAvailabilities(), 3);
             if(diesel != null){
                 record.setDateDiesel(diesel.getDate_updated());
-                record.setDiesel(diesel.getId_type());
+                record.setDiesel(diesel.getTypeId());
             }    
             gasStationsAvailabilities.add(record);
         }
@@ -103,11 +114,40 @@ public class GasStationService {
     
     private Availability getAvailabilityByType(Set<Availability> availabilities, Integer type){
         for (Availability record : availabilities) {
-            if(record.getId_type() == type){
+            if(record.getTypeId() == type){
                 return record;
             }
         }
         return null;
+    }
+
+    public void upsertAvailability(Integer IdGasStation, Integer idType, Integer idStatus) {
+        if (!gasStationRepository.existsById(IdGasStation))
+        {
+            throw new RuntimeException("Gas station not found, id: " + IdGasStation);
+        }
+
+        if (!fuelTypeRepository.existsById(idType))
+        {
+            throw new RuntimeException("Fuel type not found, id: " + IdGasStation);
+        }
+
+        if (!statusRepository.existsById(idStatus))
+        {
+            throw new RuntimeException("Status not found, id: " + IdGasStation);
+        }
+
+        
+        Availability availability = availabilityRepository.findByIdGasStationIdAndTypeId(IdGasStation, idType);        
+        if(availability == null)
+        {
+            availability = new Availability();
+            availability.setGasStationId(IdGasStation);
+            availability.setTypeId(idType);           
+        } 
+        availability.setStatusId(idStatus);
+        availability.setDate_updated(java.time.LocalDateTime.now());
+        availabilityRepository.save(availability);          
     }
 
 

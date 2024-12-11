@@ -79,7 +79,7 @@ select {
     box-sizing: border-box;
 }
 
-button.ok, button.available, button.notavailable, button.notsale {
+.ok, .available, .notavailable, .notsale {
     padding: 12px 25px;
     border: none;
     font-size: 14px;
@@ -88,39 +88,39 @@ button.ok, button.available, button.notavailable, button.notsale {
     text-align: center;
 }
 
-button.ok {
+.ok {
     background-color: var(--color-verde);
     color: white;
 }
 
-button.ok:hover {
+.ok:hover {
     background-color: #028347;
 }
 
-button.available {
+.available {
     background-color: #2196F3;
     color: white;
 }
 
-button.available:hover {
+.available:hover {
     background-color: #085ca1;
 }
 
-button.notavailable {
+.notavailable {
     background-color: #f44336;
     color: white;
 }
 
-button.notavailable:hover {
+.notavailable:hover {
     background-color: #bd302e;
 }
 
-button.notsale {
+.notsale {
     background-color: #9E9E9E;
     color: white;
 }
 
-button.notsale:hover {
+.notsale:hover {
     background-color: #686767;
 }
 

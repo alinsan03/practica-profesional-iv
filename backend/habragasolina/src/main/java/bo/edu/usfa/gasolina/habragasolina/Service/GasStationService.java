@@ -92,17 +92,17 @@ public class GasStationService {
             Availability gasolina = getAvailabilityByType(gasStation.getAvailabilities(), 1);
             if(gasolina != null){
                 record.setDateGasolina(gasolina.getDate_updated());
-                record.setGasolina(gasolina.getTypeId());
+                record.setGasolina(gasolina.getStatusId());
             }
             Availability premium = getAvailabilityByType(gasStation.getAvailabilities(), 2);
             if(premium != null){
                 record.setDatePremium(premium.getDate_updated());
-                record.setPremium(premium.getTypeId());
+                record.setPremium(premium.getStatusId());
             }
             Availability diesel = getAvailabilityByType(gasStation.getAvailabilities(), 3);
             if(diesel != null){
                 record.setDateDiesel(diesel.getDate_updated());
-                record.setDiesel(diesel.getTypeId());
+                record.setDiesel(diesel.getStatusId());
             }    
             gasStationsAvailabilities.add(record);
         }

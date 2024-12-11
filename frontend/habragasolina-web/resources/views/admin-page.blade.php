@@ -15,8 +15,8 @@
         <div class="label-group">
             <label for="dropdown">Tipo de Gasolina:</label>
             <select id="dropdown">
-                <option value="">Selecciona una opción:</option>
-                @foreach ($data as $fuel)
+                <option value="">Select an option:</option>
+                @foreach ($fueltypes as $fuel)
                 <option value="option{{$fuel['id']}}">{{$fuel['name']}}</option>
                 @endforeach
             </select>

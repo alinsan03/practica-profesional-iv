@@ -27,7 +27,7 @@
         <div class="notavailable">
             <button><a href="">No disponible</a></button>
         </div>
-        <div class="notsale">       
+        <div class="notsale">
             <button><a href="">No se vende</a></button>
         </div>
     </div>

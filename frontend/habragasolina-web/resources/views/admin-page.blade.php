@@ -21,16 +21,15 @@
                 @endforeach
             </select>
         </div>
-        <div class="available">
-            <button><a href="">Disponible</a></button>
+        <div>
+            <button class="available">Disponible</button>
         </div>
-        <div class="notavailable">
-            <button><a href="">No disponible</a></button>
+        <div>
+            <button  class="notavailable">No disponible</button>
         </div>
-        <div class="notsale">
-            <button><a href="">No se vende</a></button>
+        <div>
+            <button class="notsale">No se vende</button>
         </div>
     </div>
-	</div>
 </body>
 @include('components.footer')

@@ -26,7 +26,7 @@
                     </div>
                     <nav class="hm-menu">
                         <ul>
-                            <li><a href="main">Sign Out</a></li>
+                            <li><a href="main">Cerra Sesión</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -27,7 +27,7 @@
                     <nav class="hm-menu">
                         <ul>
                             <li><a href="index.php">Inicio</a></li>
-                            <li><a href="login.php">Iniciar Sesión</a></li>
+                            <li><a href="gas-station-login.php">Iniciar Sesión</a></li>
                         </ul>
                     </nav>
                 </div>

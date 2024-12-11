@@ -8,7 +8,7 @@
         @csrf
         <div>
             <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required minlength="5" value="{{ old('username') }}">
+            <input type="text" id="username" name="username" required minlength="5">
         </div>
         <div>
             <label for="password">Contraseña:</label>

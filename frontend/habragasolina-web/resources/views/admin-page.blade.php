@@ -6,11 +6,11 @@
 		<br>
         <div class="label-group">
             <label for="label1">Usuario:</label>
-			<label for="label1">Test</label>
+			<label for="label1">{{ session('name') }}</label>
         </div>
         <div class="label-group">
             <label for="label2">Estación de Gasolina:</label>
-            <label for="label">Test</label>
+            <label for="label">{{ session('idGasStation') }}</label>
         </div>
         <div class="label-group">
             <label for="dropdown">Tipo de Gasolina:</label>

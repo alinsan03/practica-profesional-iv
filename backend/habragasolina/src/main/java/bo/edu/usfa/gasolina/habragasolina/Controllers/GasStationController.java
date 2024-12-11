@@ -1,5 +1,6 @@
 package bo.edu.usfa.gasolina.habragasolina.Controllers;
 
+import bo.edu.usfa.gasolina.habragasolina.Entities.Availability;
 import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
 import bo.edu.usfa.gasolina.habragasolina.Request.AvailabilityRequest;
 import bo.edu.usfa.gasolina.habragasolina.Service.GasStationService;
@@ -25,6 +26,7 @@ public class GasStationController {
         GasStation newGasStation = gasStationService.saveGasStation(gasStation);
         return ResponseEntity.ok(newGasStation);
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<GasStation> updateGasStation(@PathVariable Integer id, @RequestBody GasStation gasStation) {
@@ -72,20 +74,19 @@ public class GasStationController {
     }
 
     @PostMapping("/{id}/availability")
-    public ResponseEntity<String> updateAvailability(
-            @PathVariable Integer id,
-            @RequestBody AvailabilityRequest request) {
-        try {
-            gasStationService.upsertAvailability(id, request.getIdFuelType(), request.getIdStatus());
-            return ResponseEntity.ok("Availability updated successfully");
-        } catch (RuntimeException e) {
-            if ("GasStation not found".equals(e.getMessage())) {
-                return ResponseEntity.status(404).body(e.getMessage());
-            } else if ("FuelType or Status not valid".equals(e.getMessage())) {
-                return ResponseEntity.status(400).body(e.getMessage());
+    public ResponseEntity<String> upsertAvailability( @PathVariable Integer id, @RequestBody Availability request) 
+        {
+            try {
+                gasStationService.upsertAvailability(id, request.getTypeId(), request.getStatusId());
+                return ResponseEntity.ok("Availability updated successfully");
+            } catch (RuntimeException e) {
+                if ("GasStation not found".equals(e.getMessage())) {
+                    return ResponseEntity.status(404).body(e.getMessage());
+                } else if ("FuelType or Status not valid".equals(e.getMessage())) {
+                    return ResponseEntity.status(400).body(e.getMessage());
+                }
+                return ResponseEntity.ok("Id: " + id + " id_Type " + request.getTypeId() + " id_Status: " + request.getStatusId());
             }
-            return ResponseEntity.status(500).body("Internal server error");
-        }
     }
 
 }

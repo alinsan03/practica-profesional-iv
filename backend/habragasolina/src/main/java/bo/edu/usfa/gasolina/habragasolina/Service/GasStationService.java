@@ -62,7 +62,7 @@ public class GasStationService {
         }
         return gasStationRepository.save(gasStation);
     }
-
+    
     public void deleteGasStation(Integer id) {
         if (userRepository.existsByGasStationId(id)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -92,17 +92,17 @@ public class GasStationService {
             Availability gasolina = getAvailabilityByType(gasStation.getAvailabilities(), 1);
             if(gasolina != null){
                 record.setDateGasolina(gasolina.getDate_updated());
-                record.setGasolina(gasolina.getId_type());
+                record.setGasolina(gasolina.getTypeId());
             }
             Availability premium = getAvailabilityByType(gasStation.getAvailabilities(), 2);
             if(premium != null){
                 record.setDatePremium(premium.getDate_updated());
-                record.setPremium(premium.getId_type());
+                record.setPremium(premium.getTypeId());
             }
             Availability diesel = getAvailabilityByType(gasStation.getAvailabilities(), 3);
             if(diesel != null){
                 record.setDateDiesel(diesel.getDate_updated());
-                record.setDiesel(diesel.getId_type());
+                record.setDiesel(diesel.getTypeId());
             }    
             gasStationsAvailabilities.add(record);
         }
@@ -114,41 +114,45 @@ public class GasStationService {
     
     private Availability getAvailabilityByType(Set<Availability> availabilities, Integer type){
         for (Availability record : availabilities) {
-            if(record.getId_type() == type){
+            if(record.getTypeId() == type){
                 return record;
             }
         }
         return null;
     }
 
-    public void upsertAvailability(Integer IdGasStation, Integer idFuelType, Integer idStatus) {
+    public void upsertAvailability(Integer IdGasStation, Integer idType, Integer idStatus) {
+        if (IdGasStation == null || IdGasStation < 0 || idType == null || idType <= 0 || idStatus == null || idStatus <= 0) {
+            throw new RuntimeException("FuelType or Status or GasStation not valid");
+        }
+        
         GasStation gasStation = gasStationRepository.findById(IdGasStation)
                 .orElseThrow(() -> new RuntimeException("GasStation not found"));
 
         Status status = statusRepository.findById(idStatus)
                 .orElseThrow(() -> new RuntimeException("Status not found"));
 
-        FuelType fuelType= fuelTypeRepository.findById(idFuelType)
+        FuelType fuelType= fuelTypeRepository.findById(idType)
                 .orElseThrow(() -> new RuntimeException("FuelType not found"));
 
-        if (IdGasStation == null || IdGasStation < 0 || idFuelType == null || idFuelType <= 0 || idStatus == null || idStatus <= 0) {
-            throw new RuntimeException("FuelType or Status or GasStation not valid");
-        }
-
-        Availability availability = new Availability();
-        if(availabilityRepository.existsByGasStationId(IdGasStation) == null)
+        Availability availability = availabilityRepository.findByIdGasStationIdAndTypeId(IdGasStation, idType);        
+        //Availability availability = new Availability();
+        if(availability == null)
         {
-            availability.setId_gas_station(IdGasStation);
-            availability.setId_type(idFuelType);
-            availability.setId_status(idStatus);
-                        
+            availability = new Availability();
+            availability.setGasStationId(IdGasStation);
+            availability.setTypeId(idType);
+            availability.setStatusId(idStatus);
+                   
         } else {
-            availability.setId_gas_station(gasStation.getId());
-            availability.setId_status(status.getId());
-            availability.setId_type(fuelType.getId());
+            availability.setGasStationId(gasStation.getId());
+            availability.setStatusId(status.getId());
+            availability.setTypeId(fuelType.getId());
             availability.setDate_updated(java.time.LocalDateTime.now());
+            
         }
-        availabilityRepository.save(availability);
+        availabilityRepository.save(availability);     
+        
     }
 
 

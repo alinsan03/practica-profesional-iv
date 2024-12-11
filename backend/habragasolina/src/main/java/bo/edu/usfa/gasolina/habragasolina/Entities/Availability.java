@@ -2,6 +2,8 @@ package bo.edu.usfa.gasolina.habragasolina.Entities;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,14 +23,15 @@ public class Availability {
     private Integer id;
     
     @JoinColumn(name = "id_gas_station", referencedColumnName = "id_gas_station", nullable = false)
-    private Integer id_gas_station;
+    private Integer gasStationId;
 
-    @JoinColumn(name = "id_fuel", referencedColumnName = "id_fuel", nullable = false)
-    private Integer id_type;
+    @JoinColumn(name = "id_type", referencedColumnName = "id_type", nullable = false)
+    private Integer typeId;
 
     @JoinColumn(name = "id_status", referencedColumnName = "id_status", nullable = false)
-    private Integer id_status;
+    private Integer statusId;
 
+    @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime date_updated;
 
@@ -40,28 +43,28 @@ public class Availability {
         this.id = id;
     }
 
-    public Integer getId_gas_station() {
-        return id_gas_station;
+    public Integer getGasStationId() {
+        return gasStationId;
     }
 
-    public void setId_gas_station(Integer id_gas_station) {
-        this.id_gas_station = id_gas_station;
+    public void setGasStationId(Integer gasStationId) {
+        this.gasStationId = gasStationId;
     }
 
-    public Integer getId_type() {
-        return id_type;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setId_type(Integer id_type) {
-        this.id_type = id_type;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
-    public Integer getId_status() {
-        return id_status;
+    public Integer getStatusId() {
+        return statusId;
     }
 
-    public void setId_status(Integer id_status) {
-        this.id_status = id_status;
+    public void setStatusId(Integer statusId) {
+        this.statusId = statusId;
     }
 
     public LocalDateTime getDate_updated() {
@@ -72,6 +75,4 @@ public class Availability {
         this.date_updated = date_updated;
     }
 
-
-    
 }

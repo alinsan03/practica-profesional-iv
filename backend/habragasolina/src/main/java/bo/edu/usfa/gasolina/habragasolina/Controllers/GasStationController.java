@@ -5,12 +5,13 @@ import bo.edu.usfa.gasolina.habragasolina.Service.GasStationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/gasstation")
+@RequestMapping("gas-station")
 public class GasStationController {
 
     private final GasStationService gasStationService;
@@ -20,13 +21,13 @@ public class GasStationController {
     }
 
     @PostMapping("")
-    public ResponseEntity<GasStation> saveGasStation(@RequestBody GasStation gasStation) {
+    public ResponseEntity<GasStation> saveGasStation(@Valid @RequestBody GasStation gasStation) {
         GasStation newGasStation = gasStationService.saveGasStation(gasStation);
-        return ResponseEntity.ok(newGasStation);
+        return ResponseEntity.status(201).body(newGasStation); // 201 Created
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<GasStation> updateGasStation(@PathVariable Integer id, @RequestBody GasStation gasStation) {
+    public ResponseEntity<GasStation> updateGasStation(@PathVariable Integer id, @Valid @RequestBody GasStation gasStation) {
         GasStation updatedGasStation = gasStationService.updateGasStation(id, gasStation);
         return ResponseEntity.ok(updatedGasStation);
     }
@@ -35,7 +36,7 @@ public class GasStationController {
     public ResponseEntity<String> deleteGasStation(@PathVariable Integer id) {
         try {
             gasStationService.deleteGasStation(id);
-            return ResponseEntity.ok("Gas station deleted successfully.");
+            return ResponseEntity.ok("Estación de gas eliminada exitosamente.");
         } catch (RuntimeException e) {
             return ResponseEntity.status(404).body(e.getMessage());
         }
@@ -51,24 +52,20 @@ public class GasStationController {
         }
     }    
     
-    @GetMapping("/gasstations")
+    @GetMapping("")
     public ResponseEntity<Map<String, Object>> getAllGasStations() {
         List<GasStation> gasStations = gasStationService.getAllGasStations();
-       Map<String, Object> response = new HashMap<>();
-       response.put("data", gasStations);
-       return ResponseEntity.ok(response);
-        }
-    
-
+        Map<String, Object> response = new HashMap<>();
+        response.put("data", gasStations);
+        return ResponseEntity.ok(response);
+    }
 
     @GetMapping("/availability")
     public ResponseEntity<Object> getGasStationAvailability() {
         try {
             return ResponseEntity.ok(gasStationService.getGasStationAvailability());
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error fetching gas station availability: " + e.getMessage());
+            return ResponseEntity.status(500).body("Error al obtener la disponibilidad de la gasolinera: " + e.getMessage());
         }
     }
-
 }
-

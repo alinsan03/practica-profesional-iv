@@ -78,7 +78,7 @@ input[type="text"] {
 }
 
 select {
-    width: 100%;
+    width: 30%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ddd;
@@ -86,6 +86,11 @@ select {
     font-size: 1em;
     box-sizing: border-box;
 }
+  
+option {
+    font-size: 1em;
+}
+
 
 .ok, .available, .notavailable, .notsale {
     padding: 12px 25px;

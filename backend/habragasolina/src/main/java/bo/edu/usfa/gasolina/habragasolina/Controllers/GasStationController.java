@@ -1,6 +1,8 @@
 package bo.edu.usfa.gasolina.habragasolina.Controllers;
 
+import bo.edu.usfa.gasolina.habragasolina.Entities.Availability;
 import bo.edu.usfa.gasolina.habragasolina.Entities.GasStation;
+import bo.edu.usfa.gasolina.habragasolina.Request.AvailabilityRequest;
 import bo.edu.usfa.gasolina.habragasolina.Service.GasStationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("gas-station")
+@RequestMapping("gasstation")
 public class GasStationController {
 
     private final GasStationService gasStationService;
@@ -25,6 +27,7 @@ public class GasStationController {
         GasStation newGasStation = gasStationService.saveGasStation(gasStation);
         return ResponseEntity.status(201).body(newGasStation); // 201 Created
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<GasStation> updateGasStation(@PathVariable Integer id, @Valid @RequestBody GasStation gasStation) {
@@ -68,4 +71,20 @@ public class GasStationController {
             return ResponseEntity.status(500).body("Error al obtener la disponibilidad de la gasolinera: " + e.getMessage());
         }
     }
+
+    @PostMapping("/{id}/availability")
+    public ResponseEntity<String> upsertAvailability( @PathVariable Integer id, @RequestBody AvailabilityRequest request) {
+        try {
+            gasStationService.upsertAvailability(id, request.getIdFuelType(), request.getIdStatus());
+            return ResponseEntity.ok("Availability updated successfully");
+        } catch (RuntimeException e) {
+            if ("GasStation not found".equals(e.getMessage())) {
+                return ResponseEntity.status(404).body(e.getMessage());
+            } else if ("FuelType or Status not valid".equals(e.getMessage())) {
+                return ResponseEntity.status(400).body(e.getMessage());
+            }
+            return ResponseEntity.status(500).body(e.getMessage());
+        }
+    }
 }
+

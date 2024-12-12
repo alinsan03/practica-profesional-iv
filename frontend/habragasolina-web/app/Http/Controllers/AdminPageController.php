@@ -9,9 +9,7 @@ class AdminPageController extends Controller
 {
     public function index()
     {
-
         $response = Http::get('http://localhost:8080/fueltype');
-
 
         if ($response->successful()) {
             $fueltypes = $response->json(); 
@@ -28,17 +26,12 @@ class AdminPageController extends Controller
             'idStatus' => 'required|integer',
         ]);
 
-        logger('Datos recibidos:', $request->all());
-
-        // Datos para enviar a la API de Spring Boot
         $idGasStation = $request->input('idGasStation');
         
         $data = [
             'idFuelType' => $request->input('idFuelType'),
             'idStatus' => $request->input('idStatus'),
         ];
-
-        logger('Datos enviados a Spring Boot:', $data);
 
         $response = Http::post('http://localhost:8080/gasstation/'. $idGasStation .'/availability', $data);
 

@@ -46,11 +46,9 @@
         </div>
     </div>
     <script>
-        // JavaScript para manejar eventos y enviar datos
         document.querySelectorAll('.status-btn').forEach(button => {
             button.addEventListener('click', () => {
-                // Obtener valores del dropdown y del botón
-
+                
                 const idGasStation = document.querySelector('.id-gas-station').textContent;
                 const idFuelType = document.getElementById('dropdown').value;
                 const idStatus = button.getAttribute('data-status');
@@ -61,13 +59,11 @@
                     return;
                 }
 
-                // Crear el objeto de datos
                 const postData = {
                     idGasStation: idGasStation,
                     idFuelType: idFuelType,
                     idStatus: idStatus
                 };
-                console.log(postData);
 
                 fetch('/admin-page', {
                     method: 'POST',

@@ -20,4 +20,36 @@ class AdminPageController extends Controller
 
         return view ('admin-page', ['fueltypes' => []]); 
     }
+    public function postStatus(Request $request)
+    {
+        $request->validate([
+            'idFuelType' => 'required|integer',
+            'idStatus' => 'required|integer',
+        ]);
+
+        logger('Datos recibidos:', $request->all());
+
+        // Datos para enviar a la API de Spring Boot
+        $data = [
+            'idFuelType' => $request->input('idFuelType'),
+            'idStatus' => $request->input('idStatus'),
+        ];
+
+        logger('Datos enviados a Spring Boot:', $data);
+
+        $response = Http::post('http://localhost:8080/gasstation/3/availability', $data);
+
+
+        if ($response->successful()) {
+            return response()->json([
+                'mensaje' => 'Estado actualizado correctamente',
+                'respuesta_api' => $response->json(),
+            ]);
+        }
+
+        return response()->json([
+            'error' => 'Error al actualizar el estado en la API de Spring Boot',
+            'detalle' => $response->body(),
+        ], $response->status());
+    }
 }

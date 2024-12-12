@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
+@include('components.headerAdmin')
 <body>
     <h1>Iniciar Sesión</h1>
     @if(session('error'))
@@ -21,4 +17,4 @@
         <button type="submit">Login</button>
     </form>
 </body>
-</html>
+@include('components.footer')

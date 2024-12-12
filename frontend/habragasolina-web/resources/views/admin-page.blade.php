@@ -9,7 +9,7 @@
             </div>
             <div class="label-group">
                 <label for="label2">Estación de Gasolina:</label>
-                <label for="label">Test</label>
+                <label class="id-gas-station" for="label">1</label>
             </div>
             <div class="label-group">
                 <label for="dropdown">Tipo de Gasolina:</label>
@@ -50,9 +50,12 @@
         document.querySelectorAll('.status-btn').forEach(button => {
             button.addEventListener('click', () => {
                 // Obtener valores del dropdown y del botón
+
+                const idGasStation = document.querySelector('.id-gas-station').textContent;
                 const idFuelType = document.getElementById('dropdown').value;
                 const idStatus = button.getAttribute('data-status');
 
+                console.log(idGasStation);
                 if (!idFuelType) {
                     alert('Por favor selecciona un tipo de gasolina.');
                     return;
@@ -60,11 +63,12 @@
 
                 // Crear el objeto de datos
                 const postData = {
+                    idGasStation: idGasStation,
                     idFuelType: idFuelType,
                     idStatus: idStatus
                 };
                 console.log(postData);
-                //Enviar datos con Axios
+
                 fetch('/admin-page', {
                     method: 'POST',
                     headers: {

@@ -23,6 +23,7 @@ class AdminPageController extends Controller
     public function postStatus(Request $request)
     {
         $request->validate([
+            'idGasStation' => 'required|integer',
             'idFuelType' => 'required|integer',
             'idStatus' => 'required|integer',
         ]);
@@ -30,6 +31,8 @@ class AdminPageController extends Controller
         logger('Datos recibidos:', $request->all());
 
         // Datos para enviar a la API de Spring Boot
+        $idGasStation = $request->input('idGasStation');
+        
         $data = [
             'idFuelType' => $request->input('idFuelType'),
             'idStatus' => $request->input('idStatus'),
@@ -37,7 +40,7 @@ class AdminPageController extends Controller
 
         logger('Datos enviados a Spring Boot:', $data);
 
-        $response = Http::post('http://localhost:8080/gasstation/3/availability', $data);
+        $response = Http::post('http://localhost:8080/gasstation/'. $idGasStation .'/availability', $data);
 
 
         if ($response->successful()) {

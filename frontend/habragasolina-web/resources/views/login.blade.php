@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="frontend\habragasolina-web\public\css\login.css">
+
 </head>
 <body>
     <h1>Iniciar Sesión</h1>

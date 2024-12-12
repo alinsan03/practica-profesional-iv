@@ -1,20 +1,28 @@
-@include('components.headerMain')
+@include('components.header')
 <body>
+    <div class="titleini">
     <h1>Iniciar Sesión</h1>
+    </div>
     @if(session('error'))
         <p style="color: red;">{{ session('error') }}</p>
     @endif
+    <div class="logint">
+        <div class="did">
     <form method="POST" action="{{ route('login') }}">
         @csrf
-        <div>
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required minlength="5" value="{{ old('username') }}">
+        <div class="space">
+            <label class="userlabel" for="username">Usuario:</label>
+            <input class="inputlogin" type="text" id="username" name="username" required minlength="5" value="{{ old('username') }}">
         </div>
-        <div>
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required minlength="5">
+        <div class="space">
+            <label class="userlabel" for="password">Contraseña:</label>
+            <input class="inputlogin" type="password" id="password" name="password" required minlength="5">
         </div>
-        <button type="submit">Login</button>
+        <div class="oki">
+        <button class="ok" type="submit">Login</button>
+        </div>
     </form>
+    </div>
+    </div>
 </body>
 @include('components.footer')
